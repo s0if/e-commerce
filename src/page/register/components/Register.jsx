@@ -107,9 +107,9 @@ function Register() {
     }
   };
   return (
-    <div className="b-r-l p-5">
+    <div className="b-r-l">
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column" onSubmit={handelSubmit}>
-        <div className="d-flex p-2 gap-3 w-25 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white">
           <label>Name</label>
           <input
             className="form-control"
@@ -119,7 +119,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 w-25 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white">
           <label>Email</label>
           <input
             className="form-control"
@@ -129,7 +129,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 w-25 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white">
           <label>Password</label>
           <input
             className="form-control"
@@ -139,7 +139,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 w-25 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white">
           <label>Image</label>
           <input
             className="form-control"
@@ -148,13 +148,14 @@ function Register() {
             onChange={handelImageChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 w-25 justify-content-center">
+        <div className="d-flex p-2 gap-3 justify-content-center">
           <button
             type="submit"
             className="btn btn-secondary"
             disabled={loder ? "disabled" : null}
           >
-            {loder ? <Loder /> : "submet"}
+            {loder ? <Loder /> : ""}
+            submit
           </button>
         </div>
       </form>
