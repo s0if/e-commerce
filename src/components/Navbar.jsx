@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg b-n pb-5">
+      <nav className="navbar navbar-expand-lg b-n pb-5  ">
         <div className="container-fluid d-flex justify-content-end">
           <button className="navbar-toggler bg-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
@@ -16,9 +16,6 @@ function Navbar() {
             <ul className="navbar-nav  me-auto  ">
               <li className="nav-item ">
                 <NavLink className="nav-link text-white" aria-current="page" to="/" >Home</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/categories">Categories</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link text-white" to="/products">Products</NavLink>

@@ -96,7 +96,7 @@ function Login() {
   };
   return (
     <div className="b-r-l p-5">
-      <form className=" d-flex p-2 justify-content-center align-items-center flex-column row" onSubmit={handelSubmit}>
+      <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 
         <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Email</label>
