@@ -11,6 +11,7 @@ import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoutes from './components/auth/ProtectedRoutes';
 import UnProtectedRoutes from './components/auth/UnProtectedRoutes';
+import Logout from './components/Logout';
 function App() {
   const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ function App() {
             <ProtectedRoutes>
               <Cart />
             </ProtectedRoutes>
+        },
+        {
+          path: '/logout',
+          element:<Logout/>
         },
         {
           path: '*',
