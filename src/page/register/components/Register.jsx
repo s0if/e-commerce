@@ -108,8 +108,8 @@ function Register() {
   };
   return (
     <div className="b-r-l">
-      <form className=" d-flex p-2 justify-content-center align-items-center flex-column" onSubmit={handelSubmit}>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+      <form className=" d-flex p-2 justify-content-center align-items-center flex-column row" onSubmit={handelSubmit}>
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Name</label>
           <input
             className="form-control"
@@ -119,7 +119,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Email</label>
           <input
             className="form-control"
@@ -129,7 +129,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Password</label>
           <input
             className="form-control"
@@ -139,7 +139,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Image</label>
           <input
             className="form-control"

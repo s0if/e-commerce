@@ -86,19 +86,19 @@ function Login() {
             transition: Bounce,
           });
         }
-        
+
       }
       finally {
         setLoder(false);
-        
+
       }
     }
   };
   return (
     <div className="b-r-l p-5">
-      <form className=" d-flex p-2 justify-content-center align-items-center flex-column" onSubmit={handelSubmit}>
+      <form className=" d-flex p-2 justify-content-center align-items-center flex-column row" onSubmit={handelSubmit}>
 
-        <div className="d-flex p-2 gap-3   justify-content-center text-white  ">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Email</label>
           <input
             className="form-control"
@@ -108,7 +108,7 @@ function Login() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Password</label>
           <input
             className="form-control"
@@ -118,7 +118,7 @@ function Login() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white">
+        <div className="d-flex p-2 gap-3 justify-content-center text-white ">
           <button
             type="submit"
             className="btn btn-secondary"
