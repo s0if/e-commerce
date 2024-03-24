@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css/pagination';
 import Loder from "../../../components/Loder";
@@ -8,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import './Categories.css';
-
+import 'swiper/css/navigation';
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -25,10 +24,7 @@ function Categories() {
   }
   return (
     <div>
-
-
       <Swiper
-
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
@@ -49,9 +45,9 @@ function Categories() {
           },
         }}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-
+        rewind={true}
+        navigation={true}
         className="mySwiper p-5"
-
       >
         {
           categories.map(category =>
@@ -66,19 +62,6 @@ function Categories() {
           )
         }
       </Swiper>
-
-
-
-      {
-        // categories.map(category =>
-        //   <div
-        //     className="categories"
-        //     key={category._id}
-        //   >
-        //     <img src={category.image.secure_url} />
-        //   </div>
-        // )
-      }
     </div>
   )
 }
