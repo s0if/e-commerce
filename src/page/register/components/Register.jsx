@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import Loder from "../../../components/Loder";
@@ -43,9 +43,7 @@ function Register() {
       await registerSchema.validate(user, { abortEarly: false });
       return true;
     } catch (error) {
-      console.log("is a erroe", error);
       setErrors(error.errors);
-      console.log(error.errors);
       return false;
     }
   };
@@ -79,7 +77,7 @@ function Register() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "dark",
             transition: Bounce,
           });
           navigate("/login");
@@ -95,7 +93,7 @@ function Register() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "dark",
             transition: Bounce,
           });
         }

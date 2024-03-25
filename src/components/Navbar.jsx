@@ -1,10 +1,30 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './Navbar.css'
-
+import { Bounce, toast } from 'react-toastify';
+import { useContext } from 'react';
+import { TokenContext } from '../page/context/components/Token';
 function Navbar() {
-
+  const { token, setToken } = useContext(TokenContext);
+  if (token) console.log('yes')
+  else console.log('no')
+  const navigate = useNavigate();
+  const handelChange = () => {
+    localStorage.removeItem('token')
+    navigate('/login')
+    setToken('');
+    toast.success("good bay", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
+  }
   return (
     <div>
       <nav className="navbar navbar-expand-lg b-n pb-5  ">
@@ -23,16 +43,17 @@ function Navbar() {
             </ul>
             <ul className='d-flex justify-content-end navbar-nav  '>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/register">Register</NavLink>
+                <NavLink className={`nav-link text-white  ${token && 'd-none'}`}  to="/register">Register</NavLink>
               </li>
+
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/login">Login</NavLink>
+                <NavLink className={`nav-link text-white ${token && 'd-none'}`} to="/login">Login</NavLink>
               </li>
               <li className="nav-item ">
                 <NavLink className="nav-link text-white" to="/cart">Cart</NavLink>
               </li>
               <li className="nav-item ">
-                <NavLink className="nav-link text-white" to="/logout">Logout</NavLink>
+                <button className={`nav-link text-white ${!token && "d-none"}`} onClick={handelChange} >logout</button>
               </li>
             </ul>
           </div>

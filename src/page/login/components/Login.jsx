@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import Loder from "../../../components/Loder";
 import "./Background.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { TokenContext } from "../../context/components/Token";
 function Login() {
+  const { token, setToken } = useContext(TokenContext);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -33,14 +35,11 @@ function Login() {
       await loginSchema.validate(user, { abortEarly: false });
       return true;
     } catch (error) {
-      console.log("is a erroe", error);
       setErrors(error.errors);
-      console.log(error.errors);
       return false;
     }
   };
   const handelSubmit = async (e) => {
-
     e.preventDefault();
     const validate = await validateData(user);
     if (validate) {
@@ -57,7 +56,6 @@ function Login() {
           email: "",
           password: "",
         });
-        localStorage.setItem("token", data.token);
         if (data.message == "success") {
           toast("success", {
             position: "top-right",
@@ -67,10 +65,12 @@ function Login() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "light",
+            theme: "dark",
             transition: Bounce,
           });
           navigate('/');
+          localStorage.setItem("token", data.token);
+          setToken(data.token);
         }
       } catch (error) {
         if (error.response.status == 400) {
@@ -129,6 +129,9 @@ function Login() {
           </button>
         </div>
       </form>
+      <div className="d-flex justify-content-center ">
+        <NavLink className="text-success " to='/register'>Creat Account</NavLink>
+      </div>
       <div className="w-auto d-flex p-2 justify-content-center align-items-center  flex-column">
         {errors.length > 0 ? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
       </div>

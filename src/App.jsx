@@ -10,13 +10,15 @@ import Cart from './page/Cart/components/Cart';
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoutes from './components/auth/ProtectedRoutes';
-import UnProtectedRoutes from './components/auth/UnProtectedRoutes';
-import Logout from './components/Logout';
+import TokenContextProvider from './page/context/components/Token';
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Root />,
+      element:<TokenContextProvider>
+        <Root />
+      </TokenContextProvider>
+       ,
       children: [
         {
           path: '/',
@@ -28,17 +30,11 @@ function App() {
         },
         {
           path: '/login',
-          element:
-            <UnProtectedRoutes>
-              <Login />
-            </UnProtectedRoutes>
+          element: <Login />
         },
         {
           path: '/register',
-          element:
-            <UnProtectedRoutes>
-              <Register />
-            </UnProtectedRoutes>
+          element: <Register />
         },
         {
           path: '/cart',
@@ -46,10 +42,6 @@ function App() {
             <ProtectedRoutes>
               <Cart />
             </ProtectedRoutes>
-        },
-        {
-          path: '/logout',
-          element:<Logout/>
         },
         {
           path: '*',
@@ -60,7 +52,9 @@ function App() {
   ]);
   return (
     <>
-      <RouterProvider router={router} />
+      <TokenContextProvider>
+        <RouterProvider router={router} />
+      </TokenContextProvider>
       <ToastContainer />
     </>
   )
