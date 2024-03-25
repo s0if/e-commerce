@@ -3,13 +3,12 @@ import React, { useContext, useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import Loder from "../../../components/Loder";
-import "./Background.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../context/components/Token";
 function Login() {
-  const { token, setToken } = useContext(TokenContext);
+  const { setToken,setauth } = useContext(TokenContext);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -57,7 +56,7 @@ function Login() {
           password: "",
         });
         if (data.message == "success") {
-          toast("success", {
+          toast('login success', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -95,7 +94,7 @@ function Login() {
     }
   };
   return (
-    <div className="b-r-l p-5">
+    <div className="bg-register-login p-5">
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 
         <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">

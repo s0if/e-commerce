@@ -1,12 +1,11 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
-import './Footer.css'
 import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className="  bg-f">
+    <div className="  bg-footer">
       <footer className="text-center text-lg-start" >
         <div className="container d-flex justify-content-center py-5">
           <button type="button" className="btn btn-primary btn-lg btn-floating mx-2" style={{ backgroundColor: '#54456b' }}>

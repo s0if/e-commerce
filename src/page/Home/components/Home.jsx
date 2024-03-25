@@ -4,7 +4,7 @@ import Categories from '../../categories/components/Categories'
 function Home() {
   return (
     <div>
-      <Categories/>
+      <Categories />
     </div>
   )
 }

@@ -3,7 +3,6 @@ import React, {  useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import Loder from "../../../components/Loder";
-import "./Background.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 function Register() {
@@ -104,7 +103,7 @@ function Register() {
     }
   };
   return (
-    <div className="b-r-l">
+    <div className="bg-register-login">
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
         <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Name</label>

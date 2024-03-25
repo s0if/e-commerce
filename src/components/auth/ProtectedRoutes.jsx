@@ -8,7 +8,7 @@ function ProtectedRoutes({ children }) {
         return children;
     }
     else {
-        return <Navigate to='/login' replace/>
+        return <Navigate to='/login' replace />
     }
 }
 export default ProtectedRoutes
