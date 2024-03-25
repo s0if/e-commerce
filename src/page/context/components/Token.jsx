@@ -8,7 +8,6 @@ const TokenContextProvider = ({ children }) => {
         if (token) {
             const decoded = jwtDecode(token);
             setAuth(decoded);
-            console.log(auth)
         }
     }, [token])
 

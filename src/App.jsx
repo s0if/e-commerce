@@ -11,14 +11,15 @@ import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoutes from './components/auth/ProtectedRoutes';
 import TokenContextProvider from './page/context/components/Token';
+import ProdectCategori from './page/prodectcategorie/components/ProdectCategori';
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element:<TokenContextProvider>
+      element: <TokenContextProvider>
         <Root />
       </TokenContextProvider>
-       ,
+      ,
       children: [
         {
           path: '/',
@@ -42,6 +43,10 @@ function App() {
             <ProtectedRoutes>
               <Cart />
             </ProtectedRoutes>
+        },
+        {
+          path: '/prodectcategorie/:id',
+          element: <ProdectCategori />
         },
         {
           path: '*',
