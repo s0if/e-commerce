@@ -24,7 +24,7 @@ function Categories() {
     return < Loder />
   }
   return (
-    <div>
+    <div className='bg-Categores'>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -48,17 +48,17 @@ function Categories() {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         rewind={true}
         navigation={true}
-        className="mySwiper p-5"
+        className="mySwiper p-5 "
       >
         {
+
           categories.map(category =>
-            <SwiperSlide key={category.id}>
+            <SwiperSlide className='prodectCategores-shadow' key={category.id}>
               <div
-                className="categories"
+                className="categories "
                 key={category._id}
               >
-                <Link to={`prodectcategorie/${category._id}`}><img src={category.image.secure_url} /></Link>
-                
+                <Link to={`prodectcategorie/${category._id}/${category.name}`}><img src={category.image.secure_url} /></Link>
               </div>
             </SwiperSlide>
           )

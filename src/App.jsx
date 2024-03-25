@@ -45,8 +45,12 @@ function App() {
             </ProtectedRoutes>
         },
         {
-          path: '/prodectcategorie/:id',
-          element: <ProdectCategori />
+          path: '/prodectcategorie/:id/:name',
+          element:
+            <ProtectedRoutes>
+              <ProdectCategori />
+            </ProtectedRoutes>
+
         },
         {
           path: '*',

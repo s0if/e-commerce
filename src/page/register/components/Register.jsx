@@ -151,7 +151,7 @@ function Register() {
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}
-            submit
+            register
           </button>
         </div>
       </form>

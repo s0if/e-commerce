@@ -8,6 +8,8 @@ import Loder from '../../../components/Loder';
 function ProdectCategori() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams('id');
+  const { name } = useParams('name');
+  console.log(name)
   const [product, setProduct] = useState([]);
   const getData = async () => {
     const { data } = await axios.get(
@@ -26,8 +28,10 @@ function ProdectCategori() {
     return < Loder />
   }
   return (
-    <div className="bg-prodectCategores">
+    <div className="bg-Categores">
+      <h1 className='d-flex text-white justify-content-center py-2'>{name}</h1>
       <div className='d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center'>
+
         {product.length ?
           product.map(product =>
             <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow ${product._id}`} >

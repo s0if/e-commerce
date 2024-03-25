@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { TokenContext } from "../../context/components/Token";
 function Login() {
-  const { setToken,setauth } = useContext(TokenContext);
+  const { setToken, setauth } = useContext(TokenContext);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
@@ -72,19 +72,17 @@ function Login() {
           setToken(data.token);
         }
       } catch (error) {
-        if (error.response.status == 400) {
-          toast(error.response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            transition: Bounce,
-          });
-        }
+        toast(error.response.data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
 
       }
       finally {
@@ -124,7 +122,7 @@ function Login() {
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}
-            submit
+            login
           </button>
         </div>
       </form>

@@ -39,3 +39,15 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.swiper-pagination-bullet {
+  background: #fff;
+}
+
+.swiper-button-prev::after {
+  color: #fff;
+}
+
+.swiper-button-next::after {
+  color: #fff;
+}
