@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { TokenContext } from '../../context/components/Token';
 import axios from 'axios';
-// import { cartsContext } from '../../context/components/Carts';
+import { TokenContext } from '../../context/components/Token';
+import Loder from '../../../components/Loder';
 function Cart() {
-
-  const { auth, token } = useContext(TokenContext);
+  const { token, auth } = useContext(TokenContext)
+  const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
   const getCart = async () => {
     const { data } = await axios.get(
@@ -16,53 +16,33 @@ function Cart() {
       }
     )
     setCart(data.products);
-  }
-  const getProduct = async (productId) => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API}/products/${productId}`
-    );
-    // console.log(data);
+    setLoading(false);
   }
   useEffect(() => {
     getCart()
   }, [])
-  useEffect(() => {
-    getProduct(cart.productId)
-  }, [cart])
-  // console.log(cart)
+
+  if (loading) {
+    return <Loder />
+  }
+
   return (
-    <h1>saif</h1>
-    // <div>
-    //   {
-    //     cart.map(cart => {
+    <div className={`bg-Categores`}>
+      <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}>
+        {cart.map(cart => {
+          return (
+            <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow`} >
 
-    //       //   <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow ${product._id}`} >
-    //       //   <img src={product.mainImage.secure_url} className={`card-img-top `} alt="product mainImage" />
-    //       //   <div className="card-body">
-    //       //     <h5 className="card-title text-white">{product.name}</h5>
-    //       //   </div>
-    //       //   <button
-    //       //     type="submit"
-    //       //     className="btn btn-secondary btn-hover"
-    //       //     onClick={() => handelcahnge(product.id)}
-    //       //   >
-    //       //     add product
-    //       //   </button>
-    //       // </div>
-
-
-
-    //       return (
-    //         <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow ${cart._id}`} >
-    //           {/* <img src={const { data} = await axios.get(
-    //           `${import.meta.env.VITE_API}/products/`
-    //            )} className={`card-img-top `} alt="product mainImage" /> */}
-
-    //         </div>
-    //       );
-    //     })
-    //   }
-    // </div>
+              <img src={cart.details.mainImage.secure_url} className={`card-img-top `} alt="product mainImage" />
+              <div className="card-body">
+                <h5 className="card-title text-white">{cart.details.name}</h5>
+              </div>
+            </div>
+          );
+        })
+        }
+      </div>
+    </div>
   )
 }
 
