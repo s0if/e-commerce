@@ -6,26 +6,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Loder from '../../../components/Loder';
 import { TokenContext } from '../../context/components/Token';
 import { Bounce, toast } from 'react-toastify';
-
+import useResource from '../../../hooks/useResource';
 function ProdectCategori() {
-  const [loading, setLoading] = useState(true);
   const { token } = useContext(TokenContext)
   const { id } = useParams('id');
   const { name } = useParams('name');
-  const [product, setProduct] = useState([]);
-  const getData = async () => {
-    const { data } = await axios.get(
-      `${import.meta.env.VITE_API}/products/category/${id}`
-    );
-    setProduct(data.products);
-    setLoading(false);
-  }
-  useEffect((
-    () => {
-      getData()
-    }
-  ),
-    []);
+  const { product, loading, setLoading } = useResource(id)
   const handelcahnge = async (productId) => {
     setLoading(true);
     try {
