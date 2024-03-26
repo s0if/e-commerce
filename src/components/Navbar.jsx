@@ -37,13 +37,13 @@ function Navbar() {
                 <h1 className="nav-link fs-5 text-danger"  > {auth ? auth.userName : 'Welcome'}</h1>
               </li>
               <li className="nav-item ">
-                <NavLink className="nav-link text-white" aria-current="page" to="/" >Home</NavLink>
+                <NavLink className="nav-link text-white" aria-current="page" to="/" >home</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link text-white" to="/products">Products</NavLink>
               </li>
             </ul>
-            <ul className='d-flex justify-content-end navbar-nav  '>
+            <ul className=' d-flex  navbar-nav  '>
               <li className="nav-item">
                 <NavLink className={`nav-link text-white  ${token && 'd-none'}`} to="/register">Register</NavLink>
               </li>

@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Loder from '../../../components/Loder';
 import { TokenContext } from '../../context/components/Token';
+import { Bounce, toast } from 'react-toastify';
 
 function ProdectCategori() {
   const [loading, setLoading] = useState(true);
@@ -26,15 +27,48 @@ function ProdectCategori() {
   ),
     []);
   const handelcahnge = async (productId) => {
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API}/cart`
-      , {
-        productId
-      }, {
-      headers: {
-        Authorization: `Tariq__${token}`
+    setLoading(true);
+    try {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API}/cart`
+        , {
+          productId
+        }, {
+        headers: {
+          Authorization: `Tariq__${token}`
+        }
+      })
+      if (data.message == "success") {
+        toast.success('added to cart', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       }
-    })
+    }
+    catch (error) {
+      toast.warn(error.response.data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    }
+    finally {
+      setLoading(false);
+    }
+
   }
   if (loading) {
     return < Loder />
@@ -46,7 +80,7 @@ function ProdectCategori() {
         {product.length ?
           product.map(product =>
             <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow ${product._id}`} >
-              
+
               <img src={product.mainImage.secure_url} className={`card-img-top `} alt="product mainImage" />
               <div className="card-body">
                 <h5 className="card-title text-white">{product.name}</h5>
