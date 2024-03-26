@@ -35,7 +35,6 @@ function ProdectCategori() {
         Authorization: `Tariq__${token}`
       }
     })
-    console.log(data)
   }
   if (loading) {
     return < Loder />
