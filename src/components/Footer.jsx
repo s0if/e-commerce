@@ -8,16 +8,16 @@ function Footer() {
     <div className="  bg-footer">
       <footer className="text-center text-lg-start" >
         <div className="container d-flex justify-content-center py-5">
-          <button type="button" className="btn btn-light bg-button-footer btn-lg btn-floating mx-2 " >
+          <button type="button" className="btn btn-hover-transform btn-light bg-button-footer btn-lg btn-floating mx-2 " >
             <Link to='https://www.facebook.com/saifaldin.alkomi'> <i className="bi bi-facebook"></i></Link>
           </button>
-          <button type="button" className="btn btn-light bg-button-footer btn-lg btn-floating mx-2" >
+          <button type="button" className="btn btn-hover-transform btn-light bg-button-footer btn-lg btn-floating mx-2" >
             <Link to='https://wa.me/qr/X5J7RTHY7QFUI1'><i className="bi bi-whatsapp" /></Link>
           </button>
-          <button type="button" className="btn btn-light bg-button-footer btn-lg btn-floating mx-2">
+          <button type="button" className="btn btn-hover-transform btn-light bg-button-footer btn-lg btn-floating mx-2">
             <Link to='https://www.instagram.com/saif.aldin_03/'><i className="bi bi-instagram" /></Link>
           </button>
-          <button type="button" className="btn btn-light bg-button-footer btn-lg btn-floating mx-2">
+          <button type="button" className="btn btn-hover-transform btn-light bg-button-footer btn-lg btn-floating mx-2">
             <Link to='https://www.linkedin.com/in/saif-aldin-komi-1b9523251/'><i className="bi bi-linkedin" /></Link>
           </button>
         </div>

@@ -118,7 +118,7 @@ function Login() {
         <div className="d-flex p-2 gap-3 justify-content-center text-white ">
           <button
             type="submit"
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-hover-transform"
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}

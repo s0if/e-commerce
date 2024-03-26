@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { object, string } from "yup";
 import { Bounce, toast } from "react-toastify";
 import Loder from "../../../components/Loder";
@@ -147,7 +147,7 @@ function Register() {
         <div className="d-flex p-2 gap-3 justify-content-center">
           <button
             type="submit"
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-hover-transform"
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}

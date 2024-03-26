@@ -1,10 +1,23 @@
 import React, { useContext } from 'react'
 import { TokenContext } from '../../context/components/Token';
+import { cartsContext } from '../../context/components/Carts';
 function Cart() {
-  const token = useContext(TokenContext);
+  const {auth} = useContext(TokenContext);
+  const {productId}=useContext(cartsContext)
+  console.log(productId);
   return (
     <div>
-      <h1>cart</h1>
+      {
+        // token ?
+        //   <div>
+        //     <h1>cart</h1>
+        //   </div>
+
+        //   :
+        //   <div>
+        //     <h1>cart</h1>
+        //   </div>
+      }
     </div>
   )
 }

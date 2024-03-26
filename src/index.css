@@ -80,7 +80,11 @@ input {
     color: #fff;
 }
 
-.btn:hover {
+.btn-hover-transform:hover {
     background-color: #000;
     transform: scale(1.1);
+}
+
+.btn-hover:hover {
+    background-color: #000;
 }

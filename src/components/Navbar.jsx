@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
+import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Bounce, toast } from 'react-toastify';
 import { useContext } from 'react';
@@ -51,7 +52,7 @@ function Navbar() {
                 <NavLink className={`nav-link text-white ${token && 'd-none'}`} to="/login">Login</NavLink>
               </li>
               <li className="nav-item ">
-                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart">Cart</NavLink>
+                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart"><i className="bi bi-cart"></i></NavLink>
               </li>
               <li className="nav-item ">
                 <button className={`nav-link text-white ${!token && "d-none"}`} onClick={handelChange} >logout</button>
