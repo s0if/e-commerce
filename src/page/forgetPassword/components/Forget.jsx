@@ -23,7 +23,6 @@ function Forget() {
             ...code,
             [name]: value,
         })
-        console.log('code')
     }
     const validateData = async (code) => {
         const codeSchema = object({
@@ -49,11 +48,9 @@ function Forget() {
                     `${import.meta.env.VITE_API}/auth/forgotPassword`, {
                     email: code.email,
                     password: code.password,
-                    codes: code.codes
+                    code: code.codes
                 }
                 )
-
-                console.log('data')
                 if (data.message == "success") {
                     toast.success('the code has been sent', {
                         position: "top-right",
