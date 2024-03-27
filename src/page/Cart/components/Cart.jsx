@@ -25,14 +25,13 @@ function Cart() {
   if (loading) {
     return <Loder />
   }
-
+  
   return (
     <div className={`bg-Categores`}>
       <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}>
         {cart.map(cart => {
           return (
             <div className={`card width-cart mt-2 mb-4 bg-prodectCategores-cart opacity-20 prodectCategores-shadow`} >
-
               <img src={cart.details.mainImage.secure_url} className={`card-img-top `} alt="product mainImage" />
               <div className="card-body">
                 <h5 className="card-title text-white">{cart.details.name}</h5>

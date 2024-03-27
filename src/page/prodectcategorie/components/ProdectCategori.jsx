@@ -54,7 +54,6 @@ function ProdectCategori() {
     finally {
       setLoading(false);
     }
-
   }
   if (loading) {
     return < Loder />

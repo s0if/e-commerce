@@ -10,8 +10,6 @@ const TokenContextProvider = ({ children }) => {
             setAuth(decoded);
         }
     }, [token])
-
-
     return (
         <TokenContext.Provider value={{ token, setToken, auth, setAuth }}>
             {children}

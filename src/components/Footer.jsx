@@ -2,7 +2,6 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { Link } from 'react-router-dom';
-
 function Footer() {
   return (
     <div className="  bg-footer">
