@@ -3,7 +3,8 @@
 }
 
 input {
-    text-transform: lowercase;
+    text-transform: none;
+
 }
 
 .nav-link.active {
@@ -87,4 +88,8 @@ input {
 
 .btn-hover:hover {
     background-color: #000;
+}
+
+.w-photo {
+    height: 70%;
 }

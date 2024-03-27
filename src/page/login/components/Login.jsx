@@ -126,11 +126,12 @@ function Login() {
           </button>
         </div>
       </form>
-      <div className="d-flex justify-content-center ">
+      <div className="d-flex justify-content-center gap-3 pt-4">
         <NavLink className="text-success " to='/register'>Creat Account</NavLink>
+        <NavLink className="text-success " to='/sendcode'>forget password</NavLink>
       </div>
       <div className="w-auto d-flex p-2 justify-content-center align-items-center  flex-column">
-        {errors.length > 0 ? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
+        {errors.length? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
       </div>
     </div>
   );

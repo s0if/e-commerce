@@ -13,6 +13,8 @@ import ProtectedRoutes from './components/auth/ProtectedRoutes';
 import TokenContextProvider from './page/context/components/Token';
 import ProdectCategori from './page/prodectcategorie/components/ProdectCategori';
 import Products from './page/products/components/Products';
+import SendCode from './page/forgetPassword/components/SendCode';
+import Forget from './page/forgetPassword/components/Forget';
 function App() {
   const router = createBrowserRouter([
     {
@@ -22,6 +24,14 @@ function App() {
       </TokenContextProvider>
       ,
       children: [
+        {
+          path:'/forget',
+          element: <Forget/>
+        },
+        {
+          path: "/sendcode",
+          element:<SendCode/>
+        },
         {
           path: "/products",
           element: <Products />

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { TokenContext } from '../../context/components/Token';
 import Loder from '../../../components/Loder';
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 function Cart() {
   const { token, auth } = useContext(TokenContext)
   const [loading, setLoading] = useState(true);
@@ -31,7 +33,7 @@ function Cart() {
         {cart.map(cart => {
           return (
             <div className={`card width-cart mt-2 mb-4 bg-prodect-cart opacity-20 product-shadow`} >
-              <img src={cart.details.mainImage.secure_url} className={`card-img-top position-relative`} alt="product mainImage" />
+              <img src={cart.details.mainImage.secure_url} className={`card-img-top position-relative w-photo`} alt="product mainImage" />
               <div className="card-body">
                 <h5 className="card-title text-white">{cart.details.name}</h5>
                 <h5 className="card-title text-white position-absolute start-0 top-0  bg-prodect-cart p-2 m-2 border border-1 rounded">{cart.details.price}$</h5>
