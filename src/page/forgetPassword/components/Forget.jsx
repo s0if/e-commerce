@@ -86,6 +86,7 @@ function Forget() {
 
 
         <div className="bg-register-login">
+            <h1 className='d-flex text-danger justify-content-center py-3'>forgit</h1>
             <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 
                 <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
@@ -125,7 +126,7 @@ function Forget() {
                         disabled={loder ? "disabled" : null}
                     >
                         {loder ? <Loder /> : ""}
-                        register
+                        submit
                     </button>
                 </div>
                 <div className="w-auto d-flex p-2 justify-content-center align-items-center  flex-column">

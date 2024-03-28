@@ -24,7 +24,7 @@ function SendCode() {
             )
             console.log(data)
             if (data.message == "success") {
-                toast.success('the code has been sent', {
+                toast.success('the code has been sent please check your email', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -58,8 +58,8 @@ function SendCode() {
 
     return (
         <div className="bg-register-login p-5">
+            <h1 className='d-flex text-danger justify-content-center py-3'>send code</h1>
             <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
-
                 <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
                     <label>Email</label>
                     <input

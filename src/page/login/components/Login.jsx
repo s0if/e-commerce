@@ -93,6 +93,7 @@ function Login() {
   };
   return (
     <div className="bg-register-login p-5">
+      <h1 className='d-flex text-danger justify-content-center py-3'>login</h1>
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 
         <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
@@ -128,10 +129,10 @@ function Login() {
       </form>
       <div className="d-flex justify-content-center gap-3 pt-4">
         <NavLink className="text-success " to='/register'>Creat Account</NavLink>
-        <NavLink className="text-success " to='/sendcode'>forget password</NavLink>
+        <NavLink className="text-success " to='/sendcode'>forget password?</NavLink>
       </div>
       <div className="w-auto d-flex p-2 justify-content-center align-items-center  flex-column">
-        {errors.length? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
+        {errors.length ? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
       </div>
     </div>
   );
