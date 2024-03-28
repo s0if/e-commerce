@@ -104,7 +104,7 @@ function Products() {
     }
 
     return (
-        <>
+        <div className='d-flex flex-column '>
             <div className="bg-Categores">
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
@@ -127,17 +127,18 @@ function Products() {
                     }
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul className="pagination">
+
+            <nav aria-label="Page navigation example r">
+                <ul className="pagination d-flex bg-pogination rounded justify-content-center mb-0 py-3 ">
                     {
                         (numberOfPage == 1) ?
                             <li className="page-item">
-                                <button className="page-link  disabled" aria-label="Previous">
+                                <button className="page-link disabled" aria-label="Previous">
                                     <span aria-hidden="true">«</span>
                                 </button>
                             </li> :
                             <li className="page-item">
-                                <button className="page-link" onClick={() => getProducts(numberOfPage - 1)} aria-label="Previous">
+                                <button className="page-link " onClick={() => getProducts(numberOfPage - 1)} aria-label="Previous">
                                     <span aria-hidden="true">«</span>
                                 </button>
                             </li>
@@ -147,7 +148,7 @@ function Products() {
 
                     {numberPage.map(page => (
                         <li className="page-item" key={page}>
-                            <button className="page-link" onClick={() => getProducts(page)}>{page}</button>
+                            <button className="page-link " onClick={() => getProducts(page)}>{page}</button>
                         </li>
                     )
                     )
@@ -155,11 +156,11 @@ function Products() {
                     {
                         (numberOfPage == totalPages) ?
                             <li className="page-item">
-                                <button className="page-link" aria-label="Next">
+                                <button className="page-link disabled" aria-label="Next">
                                     <span aria-hidden="true">»</span>
                                 </button>
                             </li> : <li className="page-item">
-                                <button className="page-link disabled" onClick={() => getProducts(numberOfPage + 1)} aria-label="Next">
+                                <button className="page-link " onClick={() => getProducts(numberOfPage + 1)} aria-label="Next">
                                     <span aria-hidden="true">»</span>
                                 </button>
                             </li>
@@ -167,7 +168,8 @@ function Products() {
 
                 </ul>
             </nav>
-        </>
+
+        </div>
     );
 }
 
