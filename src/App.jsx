@@ -25,12 +25,12 @@ function App() {
       ,
       children: [
         {
-          path:'/forget',
-          element: <Forget/>
+          path: '/forget',
+          element: <Forget />
         },
         {
           path: "/sendcode",
-          element:<SendCode/>
+          element: <SendCode />
         },
         {
           path: "/products",

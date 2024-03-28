@@ -10,12 +10,13 @@ function Products() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { token, auth } = useContext(TokenContext)
-    const numberOfPage = products.total / 4;
-    console.log(numberOfPage);
-    const getProducts = async () => {
+    const [numberPage, setNumberPage] = useState([]);
+    const [numberOfPage, setNumberOfPage] = useState(1)
+    const getProducts = async (Page) => {
+        setNumberOfPage(page);
         try {
             const { data } = await axios.get(
-                `${import.meta.env.VITE_API}/products?page=1&limit=4`
+                `${import.meta.env.VITE_API}/products?page=${Page}&limit=4`
             );
             setProducts(data);
             setLoading(false);
@@ -80,13 +81,28 @@ function Products() {
             setLoading(false);
         }
     }
+
+    const page = () => {
+        if (products && products.total) {
+            const totalPages = products.total / 4;
+            const pagesArray = [];
+            for (let i = 1; i <= totalPages; i++) {
+                pagesArray.push(i);
+            }
+            setNumberPage(pagesArray);
+        }
+        else console.log('else')
+    };
     useEffect(() => {
-        getProducts()
+        page()
+    }, [products])
+    useEffect(() => {
+        getProducts(1)
     }, [])
-    console.log(products)
     if (loading) {
         return < Loder />
     }
+    console.log(numberOfPage)
     return (
         <>
             <div className="bg-Categores">
@@ -99,8 +115,6 @@ function Products() {
                                     <h5 className="card-title text-white">{product.name}</h5>
                                     <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-cart p-2 m-2 border border-1 rounded">{product.price}$</h5>
                                 </div>
-
-
                                 <button
                                     type="submit"
                                     className="btn btn-secondary btn-hover"
@@ -117,18 +131,17 @@ function Products() {
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Previous">
+                        <button className="page-link" onClick={() => getProducts(numberOfPage - 1)} aria-label="Previous">
                             <span aria-hidden="true">«</span>
-                        </a>
+                        </button>
                     </li>
-                    {
-                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                        }
-                    
+                    {numberPage.map(page => {
+                        return <li className="page-item"><button className="page-link" onClick={() => getProducts(page)}>{page}</button></li>
+                    })}
                     <li className="page-item">
-                        <a className="page-link" href="#" aria-label="Next">
+                        <button className="page-link" onClick={() => getProducts(numberOfPage + 1)} aria-label="Next">
                             <span aria-hidden="true">»</span>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </nav>
