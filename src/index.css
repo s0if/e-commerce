@@ -157,6 +157,9 @@ input {
 .aspect-ratio-4x3 {
     aspect-ratio: 3/4;
 }
+.font-family{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 .aspect-ratio-21x9 {
     aspect-ratio: 21/9;
@@ -205,4 +208,7 @@ input {
     .fs-sm-1{
         font-size: 1.2rem;
     }
+}
+.bg-feedback{
+    background-color: #DAD3C6;
 }
