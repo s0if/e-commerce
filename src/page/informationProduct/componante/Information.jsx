@@ -1,12 +1,17 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loder from '../../../components/Loder';
+import { Bounce, toast } from 'react-toastify';
+import { TokenContext } from '../../context/components/Token';
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Information() {
     const { id } = useParams('id');
     const [loder, setLodder] = useState(true);
     const [product, setProduct] = useState({});
+    const { token } = useContext(TokenContext)
     const getProudct = async () => {
         const { data } = await axios.get(
             `${import.meta.env.VITE_API}/products/${id}`
@@ -14,6 +19,48 @@ function Information() {
         setProduct(data.product)
         setLodder(false)
     }
+    const handeladd = async (productId) => {
+        setLodder(true);
+        try {
+            const { data } = await axios.post(
+                `${import.meta.env.VITE_API}/cart`,
+                { productId },
+                {
+                    headers: {
+                        Authorization: `Tariq__${token}`,
+                    },
+                }
+            );
+            if (data.message === "success") {
+                toast.success('added to cart', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
+            }
+        } catch (error) {
+            toast.warn(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
+        } finally {
+            setLodder(false);
+        }
+    };
+
     useEffect(() => {
         getProudct()
     }, [])
@@ -37,9 +84,23 @@ function Information() {
                                     <h1 className='border-bottom border-dark p-3 fs-2 '>{product.price}$</h1>
                             }
                             <p className='px-lg-3 p-sm-1 p-lg-3 px-sm-0 py-5 w-auto h-auto'>{product.description}</p>
-                            <div className="feedpack m-lg-3 m-sm-helf px-lg-3 p-sm-1 p-lg-3 px-sm-0 border border-danger rounded w-auto h-auto">
+                            <button
+                                type="submit"
+                                className="btn btn-success m-3 btn-hover"
+                                onClick={() => handeladd(product.id)}
+                            >
+                                add product
+                            </button>
+                            <div id="liveAlertPlaceholder" className="feedpack m-lg-3 m-sm-helf px-lg-3 p-sm-1 p-lg-3 px-sm-0 border border-danger rounded w-auto h-auto">
+
+
                                 <h1 className='border-bottom border-danger'>feedpack</h1>
                                 {
+
+
+
+
+
                                     product.reviews.map(feedpack => (
                                         <div className='d-flex align-items-center p-sm-1 px-lg-3 m-sm-helf m-lg-3 px-sm-0  col-lg-12 cpl-sm-4 flex-wrap bg-feedback w-auto h-auto '>
                                             <h3>{feedpack.createdBy.userName}:</h3>
@@ -49,6 +110,8 @@ function Information() {
                                     )
                                 }
                             </div>
+
+
                         </div>
                     </div>
                     <div className='d-flex d-flex justify-content-center gap-5 flex-wrap'>

@@ -110,12 +110,10 @@ function Products() {
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>
-                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 product-shadow ${product._id}`} key={product._id}>
-
+                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 product-shadow position-relative ${product._id}`} key={product._id}>
                                 <NavLink to={`/information/${product.id}`}>
                                     <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />
                                 </NavLink>
-
                                 <div className="card-body">
                                     <h5 className="card-title text-white">{product.name}</h5>
                                     <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-information-cart p-2 m-2 border border-1 rounded">{product.finalPrice}$</h5>
@@ -127,6 +125,11 @@ function Products() {
                                 >
                                     add product
                                 </button>
+                                {
+                                    (product.stock > 0) ? '' : <div className='position-absolute bottom-0 top-0 start-0 end-0 overlay'>
+                                        <h1 className='bg-danger border border-light rounded p-2'>solid out</h1>
+                                    </div>
+                                }
                             </div>
                         ) : <span className="card-title fs-2 my-2 text-danger">empty product</span>
                     }
