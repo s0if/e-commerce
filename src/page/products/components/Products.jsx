@@ -5,6 +5,7 @@ import Loder from '../../../components/Loder';
 import { Bounce, toast } from 'react-toastify';
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { NavLink } from 'react-router-dom';
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -98,7 +99,7 @@ function Products() {
     useEffect(() => {
         getProducts(1);
     }, []);
-
+    console.log(products);
     if (loading) {
         return <Loder />;
     }
@@ -109,11 +110,15 @@ function Products() {
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>
-                            <div className={`card width-cart mt-2 mb-4 bg-prodect-cart opacity-20 product-shadow ${product._id}`} key={product._id}>
-                                <img src={product.mainImage.secure_url} className={`card-img-top position-relative w-photo`} alt="product mainImage" />
+                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 product-shadow ${product._id}`} key={product._id}>
+
+                                <NavLink to={`/information/${product.id}`}>
+                                    <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />
+                                </NavLink>
+
                                 <div className="card-body">
                                     <h5 className="card-title text-white">{product.name}</h5>
-                                    <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-cart p-2 m-2 border border-1 rounded">{product.price}$</h5>
+                                    <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-information-cart p-2 m-2 border border-1 rounded">{product.finalPrice}$</h5>
                                 </div>
                                 <button
                                     type="submit"
@@ -142,17 +147,13 @@ function Products() {
                                     <span aria-hidden="true">«</span>
                                 </button>
                             </li>
-
-
                     }
 
                     {numberPage.map(page => (
                         <li className="page-item" key={page}>
                             <button className="page-link " onClick={() => getProducts(page)}>{page}</button>
                         </li>
-                    )
-                    )
-                    }
+                    ))}
                     {
                         (numberOfPage == totalPages) ?
                             <li className="page-item">

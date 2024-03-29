@@ -15,6 +15,7 @@ import ProdectCategori from './page/prodectcategorie/components/ProdectCategori'
 import Products from './page/products/components/Products';
 import SendCode from './page/forgetPassword/components/SendCode';
 import Forget from './page/forgetPassword/components/Forget';
+import Information from './page/informationProduct/componante/Information';
 function App() {
   const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ function App() {
       </TokenContextProvider>
       ,
       children: [
+        {
+          path:'/information/:id',
+          element:<Information/>
+        },
         {
           path: '/forget',
           element: <Forget />
