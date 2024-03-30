@@ -17,12 +17,13 @@ function Products() {
 
     const getProducts = async (page) => {
         setNumberOfPage(page);
+
         try {
+            setLoading(true);
             const { data } = await axios.get(
                 `${import.meta.env.VITE_API}/products?page=${page}&limit=4`
             );
             setProducts(data);
-            setLoading(false);
         } catch (error) {
             toast.warn(error.response.data.message, {
                 position: "top-right",
@@ -35,6 +36,8 @@ function Products() {
                 theme: "dark",
                 transition: Bounce,
             });
+        }
+        finally {
             setLoading(false);
         }
     };
@@ -117,6 +120,9 @@ function Products() {
                                 <div className="card-body">
                                     <h5 className="card-title text-white">{product.name}</h5>
                                     <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-information-cart p-2 m-2 border border-1 rounded">{product.finalPrice}$</h5>
+                                </div>
+                                <div>
+                                    {product.avgRating}
                                 </div>
                                 <button
                                     type="submit"

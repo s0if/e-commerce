@@ -81,7 +81,7 @@ function Information() {
                                     <h1 className='border-bottom border-dark p-3 fs-2 text-decoration-line-through '>{product.price}$</h1>
                                     <h1 className='border-bottom border-dark p-3 fs-2 '>{product.finalPrice}$</h1>
                                 </div> :
-                                    <h1 className='border-bottom border-dark p-3 fs-2 '>{product.price}$</h1>
+                                    <h1 className='border-bottom border-dark p-3 fs-2'>{product.price}$</h1>
                             }
                             <p className='px-lg-3 p-sm-1 p-lg-3 px-sm-0 py-5 w-auto h-auto'>{product.description}</p>
                             <button
@@ -96,11 +96,6 @@ function Information() {
 
                                 <h1 className='border-bottom border-danger'>feedpack</h1>
                                 {
-
-
-
-
-
                                     product.reviews.map(feedpack => (
                                         <div className='d-flex align-items-center p-sm-1 px-lg-3 m-sm-helf m-lg-3 px-sm-0  col-lg-12 cpl-sm-4 flex-wrap bg-feedback w-auto h-auto '>
                                             <h3>{feedpack.createdBy.userName}:</h3>
