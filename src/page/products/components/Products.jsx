@@ -113,7 +113,7 @@ function Products() {
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>
-                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 product-shadow position-relative ${product._id}`} key={product._id}>
+                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 shadow position-relative ${product._id}`} key={product._id}>
                                 <NavLink to={`/information/${product.id}`}>
                                     <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />
                                 </NavLink>

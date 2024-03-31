@@ -65,7 +65,7 @@ function ProdectCategori() {
       <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center `} key={id} >
         {product.length ?
           product.map(product =>
-            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 product-shadow ${product._id}`} >
+            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 shadow ${product._id}`} >
 
               <NavLink to={`/information/${product._id}`}>
                 <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />

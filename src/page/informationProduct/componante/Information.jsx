@@ -73,7 +73,7 @@ function Information() {
             {
                 <div className=' bg-prodect-information-cart'>
                     <div className='w-auto d-flex justify-content-center align-items-center gap-xl-5 gap-lg-2 gap-sm-1 py-5 flex-wrap flex-lg-nowrap  container'>
-                        <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top product-shadow w-auto h-auto my-4' />
+                        <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top shadow w-auto h-auto my-4' />
                         <div className='w-auto border border-dark rounded h-auto bg-product-information'>
                             <h1 className='border-bottom border-dark p-3 fs-2 px-3'>{product.name}</h1>
                             {
@@ -113,7 +113,7 @@ function Information() {
                         {
                             product.subImages.map(image =>
                                 <div className=' mb-5 aspect-ratio-21x9'>
-                                    <img src={image.secure_url} className='rounded product-shadow ' alt="image" />
+                                    <img src={image.secure_url} className='rounded shadow ' alt="image" />
                                 </div>
                             )
                         }

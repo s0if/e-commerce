@@ -52,7 +52,7 @@ function Categories() {
         {
 
           categories.map(category =>
-            <SwiperSlide className='product-shadow' key={category.id}>
+            <SwiperSlide className='shadow' key={category.id}>
               <div
                 className="categories "
                 key={category._id}
