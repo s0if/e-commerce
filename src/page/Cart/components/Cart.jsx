@@ -173,10 +173,9 @@ function Cart() {
   }
   console.log(cart)
   return (
-
     <div className={`bg-prodect-information-cart`}>
       <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 justify-content-center ${auth.id}`}>
-        {cart.length ? <table className="table col-md-4 col-sm-3 table-bordered border-primary w-fitContent shadow">
+        {cart.length ? <table className="table col-md-4 col-sm-3 table-bordered  w-fitContent shadow m-4">
           <thead>
             <tr >
               <th scope="col">photo</th>
@@ -188,28 +187,17 @@ function Cart() {
           {cart.map(cart => {
             return (
               <>
-
                 <tbody>
-
                   <tr className=' w-auto h-auto'>
 
                     <td scope="col" className='w-10'>
                       <img src={cart.details.mainImage.secure_url} className={`rounded card-img-top w-100`} alt="product mainImage" />
                     </td>
                     <td scope="col" >
-                      <tr className='d-flex flex-column'>
+                      <tr className='d-flex flex-column p-2'>
                         <th scope="col ">
                           <h5 className="card-title text-darh fs-6">name:{cart.details.name}</h5>
                         </th>
-                        <td>
-                          <button
-                            type="submit"
-                            className="btn btn-danger my-1 btn-hover"
-                            onClick={() => handelremove(cart.productId)}
-                          >
-                            Delete
-                          </button>
-                        </td>
                         <td>
                           <button
                             type="submit"
@@ -221,13 +209,22 @@ function Cart() {
                           {cart.quantity}
                           <button
                             type="submit"
-                            className="btn btn-danger my-1 btn-hover"
+                            className="btn btn-success my-1 btn-hover"
                             onClick={() => handelincrease(cart.productId)}
                           >
                             +
                           </button>
                         </td>
-                        <td>@mdo</td>
+                        <td>
+                          <button
+                            type="submit"
+                            className="btn btn-danger my-1 btn-hover"
+                            onClick={() => handelremove(cart.productId)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                        <td>{cart.details.name}</td>
                       </tr>
                     </td>
                     <td scope="col">
@@ -239,14 +236,15 @@ function Cart() {
                       }</h2>
                     </td>
                   </tr>
-
-
                 </tbody>
               </>
             )
           })}
 
-        </table> :<span className="card-title fs-2 my-2 text-danger">empty cart</span>
+        </table> : <div className='d-flex flex-column justify-content-center '>
+          <span className="card-title fs-2 my-2 text-danger">empty cart</span>
+          <NavLink className="text-success " to='/products'>do you wont to go shopping?</NavLink>
+        </div>
         }
       </div >
     </div >
