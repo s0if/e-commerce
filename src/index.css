@@ -152,6 +152,10 @@ body {
     width: fit-content;
 }
 
+.h-fitContent {
+    height: fit-content;
+}
+
 .w-10 {
     width: 10rem;
 }
@@ -202,6 +206,13 @@ body {
     .fs-lg-5 {
         font-size: 2rem;
     }
+    .flex-lg {
+        flex-direction: row;
+    }
+    .py-lg-5 {
+        padding-top:5rem;
+        padding-bottom:5rem;
+    }
 }
 
 @media screen and (max-width:42rem) {
@@ -222,12 +233,26 @@ body {
     .p-sm-1 {
         padding: 1rem;
     }
+    .p-sm-0 {
+        padding: 0rem;
+    }
 
     .fs-sm-1 {
         font-size: 1.2rem;
+    }
+    .flex-sm {
+        flex-direction: column;
+    }
+    .py-sm-0{
+        padding-top:0rem;
+        padding-bottom:0rem;
     }
 }
 
 .bg-feedback {
     background-color: #DAD3C6;
+}
+.p-helf{
+    width: 1rem;
+    height: 1rem;
 }

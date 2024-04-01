@@ -12,6 +12,8 @@ function Cart() {
   const [cart, setCart] = useState([]);
   const [proudctInCarase, setProudctInCarase] = useState([]);
   const [numperOfProduct, setNumperOfProduct] = useState(1);
+  const [numberItem, setNumberItem] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0);
   const getCart = async () => {
     const { data } = await axios.get(
       `${import.meta.env.VITE_API}/cart`,
@@ -23,6 +25,7 @@ function Cart() {
     )
     setCart(data.products);
     setNumperOfProduct(data.products.quantity);
+    setNumberItem(data.products.length)
     setLoading(false);
   }
   const handelremove = async (productId) => {
@@ -73,6 +76,7 @@ function Cart() {
   }
   const handelincrease = async (productId) => {
     try {
+      setNumperOfProduct(numperOfProduct + 0)
       setLoading(true)
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API}/cart/incraseQuantity`,
@@ -85,7 +89,6 @@ function Cart() {
           }
         }
       )
-      setNumperOfProduct(numperOfProduct + 0)
       if (data.message === "success") {
         toast.success('increase successfully', {
           position: "top-right",
@@ -164,87 +167,157 @@ function Cart() {
       setLoading(false)
     }
   }
+
+  const handelClearCart = async () => {
+    try {
+      setLoading(true)
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_API}/cart/clear`,
+        {
+
+        },
+        {
+          headers: {
+            Authorization: `Tariq__${token}`
+          }
+        }
+      )
+      if (data.message === "success") {
+        toast.success('clear cart successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+      }
+    }
+    catch (error) {
+      toast.warn(error.response.data.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+
   useEffect(() => {
     getCart()
-  }, [proudctInCarase, numperOfProduct])
+  }, [proudctInCarase, numperOfProduct, loading])
+
+  useEffect(() => {
+    var totalPriceCalc = 0;
+    cart.forEach(item => {
+      totalPriceCalc += item.details.finalPrice * item.quantity;
+    });
+    setTotalPrice(totalPriceCalc.toFixed(2));
+  }, [cart]);
 
   if (loading) {
     return <Loder />
   }
-  console.log(cart)
+  console.log(totalPrice)
   return (
     <div className={`bg-prodect-information-cart`}>
-      <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 justify-content-center ${auth.id}`}>
-        {cart.length ? <table className="table col-md-4 col-sm-3 table-bordered  w-fitContent shadow m-4">
-          <thead>
-            <tr >
-              <th scope="col">photo</th>
-              <th scope="col ">product</th>
-              <th scope="col">price</th>
-              <th scope="col">total price</th>
-            </tr>
-          </thead>
-          {cart.map(cart => {
-            return (
-              <>
-                <tbody>
-                  <tr className=' w-auto h-auto'>
+      <div className={` d-flex flex-column flex-wrap container gap-lg-2 gap-sm-1 justify-content-center   ${auth.id}`}>
+        <div className='mx-4 mt-4 text-denger  d-flex justify-content-center'>
+          <h1 className='text-danger'>Shopping Cart</h1>
+        </div>
+        {cart.length ?
+          <div className='d-flex flex-sm flex-lg container'>
+            <table className=" table col-md-4 col-sm-3 w-fitContent shadow ms-4 mb-4 table-striped-columns ">
+              {cart.map(cart => {
+                return (
+                  <>
+                    <tbody className='position-relative d-flex flex-sm flex-lg container'>
+                      <tr className=' w-auto h-auto d-flex flex-sm flex-lg container'>
 
-                    <td scope="col" className='w-10'>
-                      <img src={cart.details.mainImage.secure_url} className={`rounded card-img-top w-100`} alt="product mainImage" />
-                    </td>
-                    <td scope="col" >
-                      <tr className='d-flex flex-column p-2'>
-                        <th scope="col ">
-                          <h5 className="card-title text-darh fs-6">name:{cart.details.name}</h5>
-                        </th>
-                        <td>
-                          <button
-                            type="submit"
-                            className="btn btn-danger my-1 btn-hover"
-                            onClick={() => (handeldecrease(cart.productId))}
-                          >
-                            -
-                          </button>
-                          {cart.quantity}
-                          <button
-                            type="submit"
-                            className="btn btn-success my-1 btn-hover"
-                            onClick={() => handelincrease(cart.productId)}
-                          >
-                            +
-                          </button>
+                        <td scope="col" className='w-10'>
+                          <img src={cart.details.mainImage.secure_url} className={`rounded card-img-top w-100`} alt="product mainImage" />
+                        </td>
+                        <td className='w-10 py-5'>
+                          <h6 className=" text-darh">{cart.details.name}</h6>
+                        </td>
+                        <td className='py-5' >
+                          <td>
+                            <button
+                              type="submit"
+                              className="btn btn-danger my-1 btn-hover "
+                              onClick={() => (handeldecrease(cart.productId))
+                              }
+                              disabled={cart.quantity == 1 ? "disabled" : null}
+                            >
+                              -
+                            </button>
+                          </td>
+                          <td><h2 className='my-1'>{cart.quantity}</h2></td>
+                          <td>
+                            <button
+                              type="submit"
+                              className="btn btn-success my-1 btn-hover"
+                              onClick={() => handelincrease(cart.productId)}
+                            >
+                              +
+                            </button>
+                          </td>
+                        </td>
+                        <td scope="col" className='py-5 px-2 '>
+                          <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1'>${cart.details.finalPrice}</h2>
+                        </td>
+                        <td scope="col" className='py-5 px-2'>
+                          <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${
+                            (cart.details.finalPrice * cart.quantity).toFixed(2)
+                          }</h2>
                         </td>
                         <td>
                           <button
                             type="submit"
-                            className="btn btn-danger my-1 btn-hover"
+                            className="btn btn-danger btn-hover  position-absolute start-0 top-0"
                             onClick={() => handelremove(cart.productId)}
                           >
-                            Delete
+                            <i className="bi bi-x-lg"></i>
                           </button>
                         </td>
-                        <td>{cart.details.name}</td>
                       </tr>
-                    </td>
-                    <td scope="col">
-                      <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${cart.details.finalPrice}</h2>
-                    </td>
-                    <td scope="col">
-                      <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${
-                        cart.details.finalPrice * cart.quantity
-                      }</h2>
-                    </td>
-                  </tr>
-                </tbody>
-              </>
-            )
-          })}
+                    </tbody>
+                  </>
+                )
+              })}
 
-        </table> : <div className='d-flex flex-column justify-content-center '>
-          <span className="card-title fs-2 my-2 text-danger">empty cart</span>
-          <NavLink className="text-success " to='/products'>do you wont to go shopping?</NavLink>
-        </div>
+            </table>
+            <div className='bg-white w-100 me-4 mb-4 shadow px-5 rounded'>
+              <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>Summary</h1>
+              <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>item:{numberItem}</h1>
+              <h2 className='border-bottom border-dark p-lg-3 p-sm-0  d-flex flex-lg'>TOTAL PRICE: ${totalPrice}</h2>
+              <div className='px-2 py-3'>
+                <button
+                  type="submit"
+                  className="btn btn-danger my-1 btn-hover "
+                  onClick={() => (handelClearCart())}
+                >
+                  clear cart
+                </button>
+              </div>
+            </div>
+          </div>
+          :
+          <div className='d-flex flex-column w-100  m-4 '>
+            <span className="card-title fs-2 my-2 text-danger d-flex justify-content-center">empty cart</span>
+            <NavLink className="text-success d-flex justify-content-center" to='/products'>do you wont to go shopping?</NavLink>
+          </div>
         }
       </div >
     </div >

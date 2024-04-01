@@ -2,11 +2,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Bounce, toast } from 'react-toastify';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TokenContext } from '../page/context/components/Token';
+import axios from 'axios';
 function Navbar() {
   const { token, setToken, auth, setAuth } = useContext(TokenContext);
   const navigate = useNavigate();
+  const [cart, setCart] = useState([]);
   const handelChange = () => {
     localStorage.removeItem('token')
     navigate('/login')
@@ -24,6 +26,21 @@ function Navbar() {
       transition: Bounce,
     });
   }
+  const getCart = async () => {
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API}/cart`,
+      {
+        headers: {
+          Authorization: `Tariq__${token}`
+        }
+      }
+    )
+    setCart(data.products);
+  }
+  useEffect(() => {
+    getCart()
+  }, [cart])
+  console.log(cart)
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-nav pb-5  ">
@@ -51,8 +68,20 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink className={`nav-link text-white ${token && 'd-none'}`} to="/login">Login</NavLink>
               </li>
-              <li className="nav-item ">
-                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart"><i className="bi bi-cart"></i></NavLink>
+              <li className="nav-item position-relative ">
+                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart">
+                  <div className='mt-1'>
+                    <i className="bi bi-cart mt-2">
+                    </i></div>
+                    {
+                      cart.length?<div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
+                    {cart.length}
+                  </div>:<div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
+                    {cart.length}
+                  </div>
+                    }
+                  
+                </NavLink>
               </li>
               <li className="nav-item ">
                 <button className={`nav-link text-white ${!token && "d-none"}`} onClick={handelChange} >logout</button>
