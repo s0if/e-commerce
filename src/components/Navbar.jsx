@@ -40,7 +40,6 @@ function Navbar() {
   useEffect(() => {
     getCart()
   }, [cart])
-  console.log(cart)
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-nav pb-5  ">
