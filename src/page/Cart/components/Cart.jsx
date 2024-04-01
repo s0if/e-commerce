@@ -243,15 +243,15 @@ function Cart() {
                 return (
                   <>
                     <tbody className='position-relative d-flex flex-sm flex-lg container'>
-                      <tr className=' w-auto h-auto d-flex flex-sm flex-lg container'>
+                      <tr className=' w-100 h-auto d-flex flex-sm flex-lg container'>
 
                         <td scope="col" className='w-10'>
                           <img src={cart.details.mainImage.secure_url} className={`rounded card-img-top w-100`} alt="product mainImage" />
                         </td>
-                        <td className='w-10 py-5'>
+                        <td className='w-10   d-flex justify-content-center align-items-center'>
                           <h6 className=" text-darh">{cart.details.name}</h6>
                         </td>
-                        <td className='py-5' >
+                        <td className='w-10 d-flex justify-content-center align-items-center' >
                           <td>
                             <button
                               type="submit"
@@ -274,10 +274,10 @@ function Cart() {
                             </button>
                           </td>
                         </td>
-                        <td scope="col" className='py-5 px-2 '>
-                          <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1'>${cart.details.finalPrice}</h2>
+                        <td scope="col" className=' px-2 w-10  d-flex justify-content-center align-items-center'>
+                          <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1'>${(cart.details.finalPrice).toFixed(2)}</h2>
                         </td>
-                        <td scope="col" className='py-5 px-2'>
+                        <td scope="col" className=' px-2 w-10  d-flex justify-content-center align-items-center'>
                           <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${
                             (cart.details.finalPrice * cart.quantity).toFixed(2)
                           }</h2>
@@ -298,7 +298,7 @@ function Cart() {
               })}
 
             </table>
-            <div className='bg-white w-100 me-4 mb-4 shadow px-5 rounded'>
+            <div className='bg-white w-100 me-4 mb-4 shadow px-5 rounded container'>
               <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>Summary</h1>
               <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>item:{numberItem}</h1>
               <h2 className='border-bottom border-dark p-lg-3 p-sm-0  d-flex flex-lg'>TOTAL PRICE: ${totalPrice}</h2>
