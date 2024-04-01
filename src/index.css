@@ -216,9 +216,10 @@ body {
     .w-lg-10{
         width: 10rem;
     }
+    
 }
 
-@media screen and (max-width:42rem) {
+@media (max-width:42rem) {
     .mx-sm-0 {
         margin-left: 0rem;
         margin-right: 0rem;
@@ -239,6 +240,10 @@ body {
     .p-sm-0 {
         padding: 0rem;
     }
+    .px-sm-4{
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
 
     .fs-sm-1 {
         font-size: 1.2rem;
@@ -250,9 +255,13 @@ body {
         padding-top:0rem;
         padding-bottom:0rem;
     }
-    .w-sm-auto{
-        width: auto;
+    .w-sm-5{
+        width: 5rem;
     }
+    .w-sm-100{
+        width: 100%;
+    }
+    
 }
 
 .bg-feedback {

@@ -213,7 +213,11 @@ function Cart() {
       setLoading(false)
     }
   }
-
+  const handelorder = async () => {
+    const { data } = await axios.post(
+      `${import.meta.env.VITE - API}/order`
+    )
+  }
   useEffect(() => {
     getCart()
   }, [proudctInCarase, numperOfProduct, loading])
@@ -238,20 +242,21 @@ function Cart() {
         </div>
         {cart.length ?
           <div className='d-flex flex-sm flex-lg container'>
-            <table className=" table col-md-4 col-sm-3 w-fitContent shadow ms-4 mb-4 table-striped-columns ">
-              {cart.map(cart => {
-                return (
-                  <>
-                    <tbody className='position-relative d-flex flex-sm flex-lg container'>
-                      <tr className=' w-100 h-auto d-flex flex-sm flex-lg container'>
+            <table className="w-sm-100 table col-md-4 col-sm-3 w-fitContent shadow mb-4 table-striped-columns w-sm-5">
+              <tbody className='container'>
+                {cart.map(cart => {
+                  return (
+                    <>
 
-                        <td scope="col" className='w-10'>
+                      <tr className='position-relative w-100 h-auto  d-flex flex-sm flex-lg  justify-content-center'>
+
+                        <td scope="col" className='w-10 w-sm-100'>
                           <img src={cart.details.mainImage.secure_url} className={`rounded card-img-top w-100`} alt="product mainImage" />
                         </td>
-                        <td className='w-10   d-flex justify-content-center align-items-center'>
+                        <td className='w-10 w-sm-100 d-flex justify-content-center align-items-center'>
                           <h6 className=" text-darh">{cart.details.name}</h6>
                         </td>
-                        <td className='w-10 d-flex justify-content-center align-items-center' >
+                        <td className='w-10 w-sm-100 d-flex justify-content-center align-items-center' >
                           <td>
                             <button
                               type="submit"
@@ -274,10 +279,10 @@ function Cart() {
                             </button>
                           </td>
                         </td>
-                        <td scope="col" className=' px-2 w-10  d-flex justify-content-center align-items-center'>
-                          <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1'>${(cart.details.finalPrice).toFixed(2)}</h2>
+                        <td scope="col" className='w-sm-100 px-2 w-10  d-flex justify-content-center align-items-center'>
+                          <h2 className=' text-dark   m-sm-helf fs-sm-1'>${(cart.details.finalPrice).toFixed(2)}</h2>
                         </td>
-                        <td scope="col" className=' px-2 w-10  d-flex justify-content-center align-items-center'>
+                        <td scope="col" className='w-sm-100 px-2 w-10  d-flex justify-content-center align-items-center'>
                           <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${
                             (cart.details.finalPrice * cart.quantity).toFixed(2)
                           }</h2>
@@ -292,17 +297,25 @@ function Cart() {
                           </button>
                         </td>
                       </tr>
-                    </tbody>
-                  </>
-                )
-              })}
 
+                    </>
+                  )
+                })}
+              </tbody>
             </table>
             <div className='bg-white w-100 me-4 mb-4 shadow px-5 rounded container'>
               <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>Summary</h1>
               <h1 className='border-bottom border-dark p-lg-3 p-sm-0'>item:{numberItem}</h1>
               <h2 className='border-bottom border-dark p-lg-3 p-sm-0  d-flex flex-lg'>TOTAL PRICE: ${totalPrice}</h2>
-              <div className='px-2 py-3'>
+              <div className='px-2 py-3 d-flex flex-column justify-content-center '>
+                <NavLink to='/order'>
+                  <button
+                    type="submit"
+                    className="btn w-100 btn-danger my-1 btn-hover "
+                  >
+                    check out
+                  </button>
+                </NavLink>
                 <button
                   type="submit"
                   className="btn btn-danger my-1 btn-hover "
@@ -310,6 +323,8 @@ function Cart() {
                 >
                   clear cart
                 </button>
+
+
               </div>
             </div>
           </div>
