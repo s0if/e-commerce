@@ -17,6 +17,7 @@ import SendCode from './page/forgetPassword/components/SendCode';
 import Forget from './page/forgetPassword/components/Forget';
 import Information from './page/informationProduct/componante/Information';
 import Order from './page/order/components/Order';
+import Profile from './page/profile/components/Profile';
 function App() {
   const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ function App() {
       </TokenContextProvider>
       ,
       children: [
+        {
+          path: "/profile",
+          element:<Profile/>
+        },
         {
           path:"/order",
           element:<Order/>

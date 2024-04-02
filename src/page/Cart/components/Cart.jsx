@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios';
 import { TokenContext } from '../../context/components/Token';
 import Loder from '../../../components/Loder';
