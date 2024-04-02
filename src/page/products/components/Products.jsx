@@ -6,6 +6,8 @@ import { Bounce, toast } from 'react-toastify';
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from 'react-router-dom';
+import Rating from 'react-rating';
+import { FaStar } from 'react-icons/fa';
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -113,16 +115,22 @@ function Products() {
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>
-                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information-cart opacity-20 shadow position-relative ${product._id}`} key={product._id}>
+                            <div className={`card width-cart mt-2 mb-4 bg-prodect-information opacity-20 shadow position-relative ${product._id}`} key={product._id}>
                                 <NavLink to={`/information/${product.id}`}>
                                     <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />
                                 </NavLink>
                                 <div className="card-body">
                                     <h5 className="card-title text-white">{product.name}</h5>
-                                    <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-information-cart p-2 m-2 border border-1 rounded">{product.finalPrice}$</h5>
+                                    <h5 className="card-title text-white position-absolute satrt-0 top-0  bg-prodect-information p-2 m-2 border border-1 rounded">{product.finalPrice}$</h5>
                                 </div>
-                                <div>
-                                    {product.avgRating}
+                                <div className='d-flex justify-content-center pb-2'>
+                                    <Rating
+                                        initialRating={product.avgRating}
+                                        readonly
+                                        emptySymbol={<FaStar className="text-muted" />}
+                                        fullSymbol={<FaStar className="text-warning" />}
+                                    />
+
                                 </div>
                                 <button
                                     type="submit"

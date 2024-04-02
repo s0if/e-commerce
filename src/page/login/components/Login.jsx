@@ -92,7 +92,7 @@ function Login() {
     }
   };
   return (
-    <div className="bg-register-login p-5">
+    <div className="bg-FFD498 p-5">
       <h1 className='d-flex text-danger justify-content-center py-3'>login</h1>
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 

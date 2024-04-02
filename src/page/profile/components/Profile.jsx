@@ -66,10 +66,10 @@ function Profile() {
     console.log(user)
     return (
         <>
-            <div className='d-flex flex-sm flex-lg'>
-                <div className='bg-bagination w-30  w-sm-100 border border-2 rounded'>
+            <div className='d-flex flex-sm flex-lg '>
+                <div className='bg-FFD498 w-30  w-sm-100 border border-2 rounded '>
                     {
-                        <div className='d-flex py-5 px-5 flex-column w-100 gap-5'>
+                        <div className='d-flex py-5 px-5 flex-column w-100 gap-5 '>
                             <Link className=' text-decoration-none border-bottom border-dark' onClick={() => {
                                 setTurn1(true)
                                 setTurn2(false)
@@ -106,7 +106,7 @@ function Profile() {
 
                 </div>
                 {
-                    turn1 && <div className=' w-100 d-flex align-items-center  gap-5 rounded  justify-content-center  pb-5 flex-wrap'>
+                    turn1 && <div className='  w-100 d-flex align-items-center  gap-5 rounded  justify-content-center  pb-5 flex-wrap'>
                         {user.image ? <img src={`${user.image.secure_url}`} className='rounded-circle size-image-profile' alt="" /> : <Loder />}
                         <div >
                             {user.userName ? <h2 className='text-warning-emphasis'>name: {user.userName}</h2> : <Loder />}
@@ -144,57 +144,57 @@ function Profile() {
 
                 {
                     turn3 && <div className=' rounded align-items-center  justify-content-center w-100 py-lg-5 py-sm-0 px-sm-0 px-lg-5 '>
-                        
-                            <table class="table table-responsive table-striped ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">photo</th>
-                                        <th className='display-none' scope="col">status</th>
-                                        <th scope="col">final price</th>
-                                        <th className='display-none' scope="col">updatedAt</th>
-                                        <th scope="col">payment Type</th>
-                                        <th scope="col">action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        order.map(order => {
-                                            return (
-                                                <tr>
-                                                    <th scope="row"><img src={`${user.image.secure_url}`} className='rounded size-profile' alt="" /></th>
-                                                    <td className='display-none'>{order.status}</td>
-                                                    <td>${order.finalPrice}</td>
-                                                    <td className='display-none'>{order.updatedAt}</td>
-                                                    <td><i className="bi icon bi-cash-coin">{order.paymentType}</i></td>
-                                                    <td>
-                                                        {order.status == 'pending' ? <button
-                                                            type="submit"
-                                                            className="btn btn-success btn-hover start-0 top-0 "
-                                                            onClick={() => handelcancle(order._id)}
-                                                        >
-                                                            {order.status}
-                                                        </button> : <button
-                                                            type="submit"
-                                                            className="btn btn-danger btn-hover start-0 top-0 disabled"
 
-                                                        >
-                                                            {order.status}
-                                                        </button>
+                        <table class="table table-responsive table-striped ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">photo</th>
+                                    <th className='display-none' scope="col">status</th>
+                                    <th scope="col">final price</th>
+                                    <th className='display-none' scope="col">updatedAt</th>
+                                    <th scope="col">payment Type</th>
+                                    <th scope="col">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    order.map(order => {
+                                        return (
+                                            <tr>
+                                                <th scope="row"><img src={`${user.image.secure_url}`} className='rounded size-profile' alt="" /></th>
+                                                <td className='display-none'>{order.status}</td>
+                                                <td>${order.finalPrice}</td>
+                                                <td className='display-none'>{order.updatedAt}</td>
+                                                <td><i className="bi icon bi-cash-coin">{order.paymentType}</i></td>
+                                                <td>
+                                                    {order.status == 'pending' ? <button
+                                                        type="submit"
+                                                        className="btn btn-success btn-hover start-0 top-0 "
+                                                        onClick={() => handelcancle(order._id)}
+                                                    >
+                                                        {order.status}
+                                                    </button> : <button
+                                                        type="submit"
+                                                        className="btn btn-danger btn-hover start-0 top-0 disabled"
 
-                                                        }
+                                                    >
+                                                        {order.status}
+                                                    </button>
 
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
+                                                    }
+
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
 
 
 
-                                </tbody>
-                            </table>
+                            </tbody>
+                        </table>
 
-                       
+
                     </div>
                 }
             </div>

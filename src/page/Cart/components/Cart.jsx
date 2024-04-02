@@ -200,10 +200,10 @@ function Cart() {
   }
   console.log(totalPrice)
   return (
-    <div className={`bg-prodect-information-cart`}>
+    <div className={`bg-FFD498`}>
       <div className={` d-flex flex-column flex-wrap container gap-lg-2 gap-sm-1 justify-content-center   ${auth.id}`}>
         <div className='mx-4 mt-4 text-denger  d-flex justify-content-center'>
-          <h1 className='text-danger'>Shopping Cart</h1>
+          <h1 >Shopping Cart</h1>
         </div>
         {cart.length ?
           <div className='d-flex flex-sm flex-lg container'>
@@ -212,7 +212,6 @@ function Cart() {
                 {cart.map(cart => {
                   return (
                     <>
-
                       <tr className='position-relative w-100 h-auto  d-flex flex-sm flex-lg  justify-content-center'>
 
                         <td scope="col" className='w-10 w-sm-100'>
@@ -278,7 +277,7 @@ function Cart() {
                     type="submit"
                     className="btn w-100 btn-danger my-1 btn-hover "
                   >
-                    check out
+                   Confirmation
                   </button>
                 </NavLink>
                 <button

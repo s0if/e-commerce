@@ -29,15 +29,15 @@ function App() {
       children: [
         {
           path: "/profile",
-          element:<Profile/>
+          element: <Profile />
         },
         {
-          path:"/order",
-          element:<Order/>
+          path: "/order",
+          element: <Order />
         },
         {
-          path:'/information/:id',
-          element:<Information/>
+          path: '/information/:id',
+          element: <Information />
         },
         {
           path: '/forget',

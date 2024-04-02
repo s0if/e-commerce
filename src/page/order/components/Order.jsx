@@ -46,16 +46,6 @@ function Order() {
       setLoading(false);
     }
   }
-  // const handelsubmitremove = async (id) => {
-  //   const { data } = await axios.patch(
-  //     `${import.meta.env.VITE_API}/cancel/${id}`,{
-  //       headers: {
-  //         Authorization: `Tariq__${token}`,
-  //       }
-  //     }
-  //   )
-  // }
-
   const handelremove = async (productId) => {
     try {
       setLoading(true)
@@ -188,8 +178,8 @@ function Order() {
   }
   console.log(cart);
   return (
-    <div className="bg-register-login">
-      <h1 className='d-flex text-danger justify-content-center py-3'>order</h1>
+    <div className="bg-FFD498">
+      <h1 className='d-flex justify-content-center py-3'>order</h1>
       <div className='d-flex justify-content-center flex-lg flex-sm  gap-1'>
         {
           cart.map(cart => {
@@ -212,7 +202,7 @@ function Order() {
         }
       </div>
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmitorder}>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>coupon <span className='text-danger'>(Optional)</span></label>
           <input
             className="form-control"
@@ -222,8 +212,8 @@ function Order() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
-          <label>adres</label>
+        <div className="d-flex p-2 gap-3 justify-content-center  flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+          <label>addresd</label>
           <input
             className="form-control"
             type="text"
@@ -232,7 +222,7 @@ function Order() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>phone</label>
           <input
             className="form-control"
