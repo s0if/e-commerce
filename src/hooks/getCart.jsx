@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { TokenContext } from '../page/context/components/Token';
+import React, { useContext, useEffect, useState } from 'react';
+import { TokenContext } from '../context/Token';
 function getCart() {
     const [loading, setLoading] = useState(true);
     const [cart, setCart] = useState([]);

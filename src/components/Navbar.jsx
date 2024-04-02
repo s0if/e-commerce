@@ -3,8 +3,8 @@ import "bootstrap-icons/font/bootstrap-icons.min.css";
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { Bounce, toast } from 'react-toastify';
 import { useContext, useEffect, useState } from 'react';
-import { TokenContext } from '../page/context/components/Token';
 import axios from 'axios';
+import { TokenContext } from '../context/Token';
 function Navbar() {
   const { token, setToken, auth, setAuth } = useContext(TokenContext);
   const navigate = useNavigate();

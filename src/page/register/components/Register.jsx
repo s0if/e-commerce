@@ -103,10 +103,10 @@ function Register() {
     }
   };
   return (
-    <div className="FFD498">
-      <h1 className='d-flex text-danger justify-content-center py-3'>register</h1>
+    <div className="bg-FFD498">
+      <h1 className='d-flex text-335495 justify-content-center py-3'>register</h1>
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Name</label>
           <input
             className="form-control"
@@ -116,7 +116,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Email</label>
           <input
             className="form-control"
@@ -126,7 +126,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Password</label>
           <input
             className="form-control"
@@ -136,7 +136,7 @@ function Register() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Image</label>
           <input
             className="form-control"
@@ -148,7 +148,7 @@ function Register() {
         <div className="d-flex p-2 gap-3 justify-content-center">
           <button
             type="submit"
-            className="btn btn-secondary btn-hover-transform"
+            className="btn bg-335495 text-white btn-hover-transform"
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}

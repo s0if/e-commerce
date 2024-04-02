@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loder from '../../../components/Loder';
 import { Bounce, toast } from 'react-toastify';
-import { TokenContext } from '../../context/components/Token';
+import { TokenContext } from '../../../context/Token';
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Rating from 'react-rating';
@@ -16,11 +16,13 @@ function Information() {
     const { token } = useContext(TokenContext)
     const [commit, setCommit] = useState('')
     const [rating, setRating] = useState('')
+    const [reviw, setReviw] = useState([])
     const getProudct = async () => {
         const { data } = await axios.get(
             `${import.meta.env.VITE_API}/products/${id}`
         )
         setProduct(data.product)
+        setReviw(data.product.reviews)
         setLodder(false)
     }
     const handelCreateReview = async (id) => {
@@ -101,23 +103,14 @@ function Information() {
     if (loder) {
         return <Loder />
     }
-    console.log(product)
-    // const [showAlert, setShowAlert] = useState(false);
-
-    // const handleShowAlert = () => {
-    //     setShowAlert(true);
-    // };
-
-    // const handleCloseAlert = () => {
-    //     setShowAlert(false);
-    // };
+    console.log(reviw)
     return (
         <>
 
             {
                 <div className=' shadow'>
                     <div className='w-auto d-flex justify-content-center align-items-center gap-xl-5 gap-lg-2 gap-sm-1 py-5 flex-wrap flex-lg-nowrap  container'>
-                        <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top  w-auto h-auto my-4' />
+                        <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top w-20 my-4' />
                         <div className='w-auto border border-dark rounded h-auto bg-product-information'>
                             <h1 className='border-bottom border-dark p-3 fs-2 px-3'>{product.name}</h1>
                             <div className='d-flex  align-items-center gap-5'>
@@ -140,7 +133,7 @@ function Information() {
                                     add product
                                 </button>
                                 <div className='d-flex align-items-center justify-content-center gap-3 flex-lg flex-sm m-3'>
-                                    <div className=''>
+                                    <div className='d-flex align-items-center'>
                                         <label className='fs-3 me-2'>commit</label>
                                         <input
                                             className=" h-fitContent "
@@ -158,16 +151,7 @@ function Information() {
                                         fullSymbol={<FaStar className="text-warning" />}
                                     />
                                     <button className='btn btn-success btn-hover' onClick={() => handelCreateReview(product._id)}>submit</button>
-                                </div></div>
-
-                            <div>
-                                {/* <button onClick={handleShowAlert} className="btn btn-primary">Show Alert</button>
-                                {showAlert && (
-                                    <div className="alert alert-success alert-dismissible fade show" role="alert">
-                                        This is a success alert!
-                                        <button type="button" className="btn-close" onClick={handleCloseAlert}>saif</button>
-                                    </div>
-                                )} */}
+                                </div>
                             </div>
                         </div>
 
@@ -177,10 +161,32 @@ function Information() {
                         {
                             product.subImages.map(image =>
                                 <div className=' mb-5 aspect-ratio-21x9 '>
-                                    <img src={image.secure_url} className='rounded shadow ' alt="image" />
+                                    <img src={image.secure_url} className='rounded shadow w-20' alt="image" />
                                 </div>
                             )
                         }
+                    </div>
+                    <h1 className='border-bottom border-danger px-5'>feedpack</h1>
+                    <div className='d-flex mx-4 rounded flex-column'>
+                        {
+
+                            reviw.map(feedpack => (
+                                <div className='d-flex rounded flex-column p-sm-1 px-lg-3 m-sm-helf m-lg-3 px-sm-0 col-lg-12 cpl-sm-4 flex-wrap border border-2 w-auto h-auto '>
+                                    <h2>{feedpack.createdBy.userName}:</h2>
+                                    <h4 className='font-family px-3 '>{feedpack.comment}</h4>
+                                    <Rating
+                                        className='fs-5 px-3'
+                                        initialRating={feedpack.rating}
+                                        readonly
+                                        emptySymbol={<FaStar className="text-muted" />}
+                                        fullSymbol={<FaStar className="text-warning" />}
+                                    />
+                                </div>
+                            ))
+
+
+                        }
+
                     </div>
 
                 </div>

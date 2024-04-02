@@ -32,7 +32,9 @@ body {
     width: 100%;
     height: 100%;
 }
-
+.w-20{
+    width: 20rem;
+}
 .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -67,8 +69,14 @@ body {
 }
 
 .bg-nav {
-    background-color: #FFFF00;
+    background-color: #335495;
 }
+.text-335495{
+color: #335495;
+}
+.bg-335495{
+    background-color: #335495;
+    }
 
 .dropdown-item.active {
     background-color: #fff;
@@ -120,7 +128,9 @@ body {
 }
 
 .bg-FFD498 {
-    background-color: #FFD498;
+    background-color: #A5BECF;
+   /* background-color:  #668BC4; */
+    /* background-color: #FFD498; */
 }
 
 .bg-prodect-information {
@@ -143,6 +153,12 @@ body {
 .btn-hover-transform:hover {
     background-color: #000;
     transform: scale(1.1);
+}
+.btn-hover-red:hover{
+    background-color: red;
+}
+.btn-hover-success:hover{
+    background-color: green;
 }
 
 .btn-hover:hover {

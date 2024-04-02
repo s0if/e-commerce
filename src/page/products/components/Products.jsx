@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { TokenContext } from '../../context/components/Token';
+import { TokenContext } from '../../../context/Token';
 import Loder from '../../../components/Loder';
 import { Bounce, toast } from 'react-toastify';
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
 
+
 function Products() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,6 +17,7 @@ function Products() {
     const [numberPage, setNumberPage] = useState([]);
     const [numberOfPage, setNumberOfPage] = useState(1);
     const totalPages = Math.ceil(products.total / 4);
+    const [sort, setSort] = useState('name');
 
     const getProducts = async (page) => {
         setNumberOfPage(page);
@@ -23,7 +25,7 @@ function Products() {
         try {
             setLoading(true);
             const { data } = await axios.get(
-                `${import.meta.env.VITE_API}/products?page=${page}&limit=4`
+                `${import.meta.env.VITE_API}/products?page=${page}&limit=4&sort=${sort}`
             );
             setProducts(data);
         } catch (error) {
@@ -103,7 +105,7 @@ function Products() {
 
     useEffect(() => {
         getProducts(1);
-    }, []);
+    }, [sort]);
     console.log(products);
     if (loading) {
         return <Loder />;
@@ -112,6 +114,80 @@ function Products() {
     return (
         <div className='d-flex flex-column '>
             <div className="bg-Categores">
+
+
+
+
+                <div>
+                    <a className="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        sort
+                    </a>
+                    <ul className="dropdown-menu">
+                        <li >
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('')}
+                            >
+                                defult
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('price')}
+                            >
+                                price
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('-price')}
+                            >
+                                -price
+                            </button>
+
+                        </li>
+                        <li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('name')}
+                            >
+                                -name
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('discount')}
+                            >
+                                discount
+                            </button>
+                        </li>
+                        < li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('-discount')}
+                            >
+                                -discount
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                type="submit"
+                                className="w-75 mx-2 btn-hover-success"
+                                onClick={() => setSort('-price')}
+                            >
+                            </button>
+                        </li>
+                    </ul>
+                </div>
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>

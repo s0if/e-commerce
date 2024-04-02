@@ -10,7 +10,7 @@ import Cart from './page/Cart/components/Cart';
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoutes from './components/auth/ProtectedRoutes';
-import TokenContextProvider from './page/context/components/Token';
+import TokenContextProvider from './context/Token';
 import ProdectCategori from './page/prodectcategorie/components/ProdectCategori';
 import Products from './page/products/components/Products';
 import SendCode from './page/forgetPassword/components/SendCode';
@@ -18,6 +18,7 @@ import Forget from './page/forgetPassword/components/Forget';
 import Information from './page/informationProduct/componante/Information';
 import Order from './page/order/components/Order';
 import Profile from './page/profile/components/Profile';
+import CartContextProvider from './context/CartContext';
 function App() {
   const router = createBrowserRouter([
     {
@@ -92,7 +93,9 @@ function App() {
   return (
     <>
       <TokenContextProvider>
-        <RouterProvider router={router} />
+        <CartContextProvider>
+          <RouterProvider router={router} />
+        </CartContextProvider>
       </TokenContextProvider>
       <ToastContainer />
     </>

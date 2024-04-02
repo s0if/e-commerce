@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import Loder from '../../../components/Loder';
-import { TokenContext } from '../../context/components/Token';
+import { TokenContext } from '../../../context/Token';
 import { object, string } from 'yup';
 import { Bounce, toast } from 'react-toastify';
 import getCart from '../../../hooks/getCart';

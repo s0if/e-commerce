@@ -6,7 +6,7 @@ import Loder from "../../../components/Loder";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { TokenContext } from "../../context/components/Token";
+import { TokenContext } from "../../../context/Token";
 function Login() {
   const { setToken, setauth } = useContext(TokenContext);
   const navigate = useNavigate();
@@ -93,10 +93,10 @@ function Login() {
   };
   return (
     <div className="bg-FFD498 p-5">
-      <h1 className='d-flex text-danger justify-content-center py-3'>login</h1>
+      <h1 className='d-flex text-335495 justify-content-center py-3'>login</h1>
       <form className=" d-flex p-2 justify-content-center align-items-center flex-column row m-0" onSubmit={handelSubmit}>
 
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Email</label>
           <input
             className="form-control"
@@ -106,7 +106,7 @@ function Login() {
             onChange={handelChange}
           />
         </div>
-        <div className="d-flex p-2 gap-3 justify-content-center text-white flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
+        <div className="d-flex p-2 gap-3 justify-content-center flex-column col-md-3 col-lg-4 col-sm-6 col-xs-12">
           <label>Password</label>
           <input
             className="form-control"
@@ -119,7 +119,7 @@ function Login() {
         <div className="d-flex p-2 gap-3 justify-content-center text-white ">
           <button
             type="submit"
-            className="btn btn-secondary btn-hover-transform"
+            className="btn text-white bg-335495 btn-hover-transform"
             disabled={loder ? "disabled" : null}
           >
             {loder ? <Loder /> : ""}
@@ -128,8 +128,8 @@ function Login() {
         </div>
       </form>
       <div className="d-flex justify-content-center gap-3 pt-4">
-        <NavLink className="text-success " to='/register'>Creat Account</NavLink>
-        <NavLink className="text-success " to='/sendcode'>forget password?</NavLink>
+        <NavLink className="text-dark " to='/register'>Creat Account</NavLink>
+        <NavLink className="text-dark " to='/sendcode'>forget password?</NavLink>
       </div>
       <div className="w-auto d-flex p-2 justify-content-center align-items-center  flex-column">
         {errors.length ? errors.map((error, index) => <p className="p-2  border bg-danger border-danger" key={index}>{error}</p>) : ''}
