@@ -63,13 +63,13 @@ function Profile() {
         getProfiles()
         getOrder()
     }, [loading])
-    console.log(order)
+    console.log(user)
     return (
         <>
             <div className='d-flex flex-sm flex-lg'>
-                <div className='bg-danger w-25  rounded'>
+                <div className='bg-bagination w-30  w-sm-100 border border-2 rounded'>
                     {
-                        <div className='d-flex py-5 px-4  flex-column w-100 gap-5'>
+                        <div className='d-flex py-5 px-5 flex-column w-100 gap-5'>
                             <Link className=' text-decoration-none border-bottom border-dark' onClick={() => {
                                 setTurn1(true)
                                 setTurn2(false)
@@ -98,41 +98,44 @@ function Profile() {
                             }}>
                                 <h4 className='w-100 text-dark' >
                                     <i className="bi icon bi-shop pe-2"></i>
-                                    order</h4>
+                                    order
+                                </h4>
                             </Link>
                         </div>
                     }
 
                 </div>
                 {
-                    turn1 && <div className=' w-100 d-flex align-items-center  gap-3 rounded bg-success  justify-content-center  py-5'>
-                        {user.image ? <img src={`${user.image.secure_url}`} className='rounded size-image-profile' alt="" /> : <Loder />}
-                        <div>
-                            {user.userName ? <h1 className='text-warning-emphasis'>name: {user.userName}</h1> : <Loder />}
-                            {user.email ? <h2 className='text-warning-emphasis'>email: {user.email}</h2> : <Loder />}
+                    turn1 && <div className=' w-100 d-flex align-items-center  gap-5 rounded  justify-content-center  pb-5 flex-wrap'>
+                        {user.image ? <img src={`${user.image.secure_url}`} className='rounded-circle size-image-profile' alt="" /> : <Loder />}
+                        <div >
+                            {user.userName ? <h2 className='text-warning-emphasis'>name: {user.userName}</h2> : <Loder />}
+                            {user.email ? <h4 className='text-warning-emphasis'>email: {user.email}</h4> : <Loder />}
                         </div>
                     </div>
                 }
                 {
-                    turn2 && <div className='d-flex align-items-center px-5 gap-3 rounded bg-success  justify-content-end w-100 py-5 flex-column'>
+                    turn2 && <div className='d-flex align-items-center px-5 gap-3 rounded   justify-content-center w-100 pb-5 flex-column'>
 
                         {
-                            user.userName ? <h1 className='text-warning-emphasis '>
-                                name:
-                                <Link to='https://wa.me/qr/X5J7RTHY7QFUI1'>
+                            user.userName ? <h2 className='text-warning-emphasis '>
+
+                                <i className="bi icon pe-2 bi-whatsapp"></i>
+                                <Link className='text-warning-emphasis' to='https://wa.me/qr/X5J7RTHY7QFUI1'>
                                     {user.userName}
                                 </Link>
-                            </h1> : <Loder />
+                            </h2> : <Loder />
                         }
                         {
-                            user.email ? <h2 className='text-warning-emphasis'>
-                                email:
-                                <Link to={
+                            user.email ? <h4 className='text-warning-emphasis d-flex'>
+                                <i className="bi icon pe-2 bi-envelope"></i>
+
+                                <Link className='text-warning-emphasis' to={
                                     `https://mail.google.com/mail/u/0/#inbox?compose=CllgCJfpsSShxckVnKHRxrKjDFmvsPrlQDvCBLgDXNmsGPZKGQrPxMJHGplGtPWWHGnmvnzcNVq`
                                 }>
                                     {user.email}
                                 </Link>
-                            </h2> : <Loder />
+                            </h4> : <Loder />
                         }
 
 
@@ -140,58 +143,58 @@ function Profile() {
                 }
 
                 {
-                    turn3 && <div className='d-flex align-items-center px-5 gap-3 rounded bg-success  justify-content-end w-100 py-5 flex-column'>
+                    turn3 && <div className=' rounded align-items-center  justify-content-center w-100 py-lg-5 py-sm-0 px-sm-0 px-lg-5 '>
+                        
+                            <table class="table table-responsive table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">photo</th>
+                                        <th className='display-none' scope="col">status</th>
+                                        <th scope="col">final price</th>
+                                        <th className='display-none' scope="col">updatedAt</th>
+                                        <th scope="col">payment Type</th>
+                                        <th scope="col">action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        order.map(order => {
+                                            return (
+                                                <tr>
+                                                    <th scope="row"><img src={`${user.image.secure_url}`} className='rounded size-profile' alt="" /></th>
+                                                    <td className='display-none'>{order.status}</td>
+                                                    <td>${order.finalPrice}</td>
+                                                    <td className='display-none'>{order.updatedAt}</td>
+                                                    <td><i className="bi icon bi-cash-coin">{order.paymentType}</i></td>
+                                                    <td>
+                                                        {order.status == 'pending' ? <button
+                                                            type="submit"
+                                                            className="btn btn-success btn-hover start-0 top-0 "
+                                                            onClick={() => handelcancle(order._id)}
+                                                        >
+                                                            {order.status}
+                                                        </button> : <button
+                                                            type="submit"
+                                                            className="btn btn-danger btn-hover start-0 top-0 disabled"
 
-                        <table class="table table-responsive table-striped ">
-                            <thead>
-                                <tr>
-                                    <th scope="col">photo</th>
-                                    <th scope="col">status</th>
-                                    <th scope="col">final price</th>
-                                    <th scope="col">updatedAt</th>
-                                    <th scope="col">payment Type</th>
-                                    <th scope="col">action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    order.map(order => {
-                                        return (
-                                            <tr>
-                                                <th scope="row"><img src={`${user.image.secure_url}`} className='rounded size-profile' alt="" /></th>
-                                                <td>{order.status}</td>
-                                                <td>${order.finalPrice}</td>
-                                                <td>{order.updatedAt}</td>
-                                                <td><i className="bi icon bi-cash-coin">{order.paymentType}</i></td>
-                                                <td>
-                                                    {order.status == 'pending' ? <button
-                                                        type="submit"
-                                                        className="btn btn-success btn-hover start-0 top-0 "
-                                                        onClick={() => handelcancle(order._id)}
-                                                    >
-                                                        {order.status}
-                                                    </button> : <button
-                                                        type="submit"
-                                                        className="btn btn-danger btn-hover start-0 top-0 disabled"
+                                                        >
+                                                            {order.status}
+                                                        </button>
 
-                                                    >
-                                                        {order.status}
-                                                    </button>
+                                                        }
 
-                                                    }
-
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-
-
-
-                            </tbody>
-                        </table>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
 
 
+
+                                </tbody>
+                            </table>
+
+                       
                     </div>
                 }
             </div>
