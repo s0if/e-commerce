@@ -135,7 +135,9 @@ function Order() {
             }
           }
         )
-
+        order.coupon='';
+        order.address='';
+        order.phone='';
         setOrder(data)
         if (data.message == "success") {
           toast.success("confirmation has been sent please check your email", {

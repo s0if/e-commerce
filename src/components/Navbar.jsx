@@ -10,7 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({})
-  const [numberCart, setNumberCart] = useState(localStorage.getItem("token"))
+  // const [numberCart, setNumberCart] = useState(localStorage.getItem("token"))
   const handelChange = () => {
     localStorage.removeItem('token')
     navigate('/login')
@@ -38,8 +38,8 @@ function Navbar() {
       }
     )
     setCart(data.products);
-    localStorage.setItem("cart", cart.length);
-    setNumberCart(cart.length)
+    // localStorage.setItem("cart", cart.length);
+    // setNumberCart(cart.length)
   }
   const getProfiles = async () => {
     try {
@@ -63,7 +63,6 @@ function Navbar() {
     getCart()
     getProfiles()
   }, [token])
-  console.log(numberCart)
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-nav  ">

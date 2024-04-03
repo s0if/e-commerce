@@ -236,7 +236,7 @@ function Cart() {
                           <td>
                             <button
                               type="submit"
-                              className="btn btn-success  my-1 btn-hover"
+                              className="btn btn-primary  my-1 btn-hover-success"
                               onClick={() => handelincrease(cart.productId)}
                             >
                               +
@@ -282,7 +282,7 @@ function Cart() {
                 </NavLink>
                 <button
                   type="submit"
-                  className="btn btn-primary  my-1  "
+                  className="btn btn-primary  my-1 btn-hover-success "
                   onClick={() => (handelClearCart())}
                 >
                   clear cart
