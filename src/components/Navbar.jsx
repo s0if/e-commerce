@@ -10,7 +10,6 @@ function Navbar() {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({})
-  // const [numberCart, setNumberCart] = useState(localStorage.getItem("token"))
   const handelChange = () => {
     localStorage.removeItem('token')
     navigate('/login')
@@ -38,8 +37,6 @@ function Navbar() {
       }
     )
     setCart(data.products);
-    // localStorage.setItem("cart", cart.length);
-    // setNumberCart(cart.length)
   }
   const getProfiles = async () => {
     try {
@@ -62,10 +59,10 @@ function Navbar() {
   useEffect(() => {
     getCart()
     getProfiles()
-  }, [token])
+  }, [])
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-nav  ">
+      <nav className="navbar navbar-expand-lg bg-335495  ">
         <div className="container-fluid d-flex justify-content-end align-item-center">
           <button className="navbar-toggler bg-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
@@ -86,7 +83,7 @@ function Navbar() {
                     <i className="bi icon bi-cart mt-2">
                     </i></div>
                   {
-                    cart.length? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
+                    cart.length ? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
                       {cart.length}
                     </div> : <div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
                       {cart.length}
@@ -120,42 +117,8 @@ function Navbar() {
                   <i className="bi bi-box-arrow-right color-icon " />
                   <button className={`nav-link  dropdown-item text-dark `} onClick={handelChange} >logout</button>
                 </li>
-
-
               </ul>
             </li>
-
-
-            {/* <ul className=' d-flex  navbar-nav justify-content-center align-items-center'>
-              <li className="nav-item">
-                <NavLink className={`nav-link text-white dropdown-item ${token && 'd-none'}`} to="/register">Register</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className={`nav-link text-danger dropdown-item ${token && 'd-none'}`} to="/login">Login</NavLink>
-              </li>
-              <li className="nav-item position-relative ">
-                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart">
-                  <div className='mt-1'>
-                    <i className="bi bi-cart mt-2">
-                    </i></div>
-                    {
-                      cart.length?<div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
-                    {cart.length}
-                  </div>:<div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
-                    {cart.length}
-                  </div>
-                    }
-                  
-                </NavLink>
-              </li>
-              <li className="nav-item ">
-                <button className={`nav-link text-white dropdown-item ${!token && "d-none"}`} onClick={handelChange} >logout</button>
-              </li>
-            </ul> */}
-
-
-
-
           </div>
         </div>
       </nav>

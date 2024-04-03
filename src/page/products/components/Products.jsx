@@ -8,8 +8,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { NavLink } from 'react-router-dom';
 import Rating from 'react-rating';
 import { FaStar } from 'react-icons/fa';
-
-
 function Products() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,15 +16,21 @@ function Products() {
     const [numberOfPage, setNumberOfPage] = useState(1);
     const totalPages = Math.ceil(products.total / 4);
     const [sort, setSort] = useState('name');
+    const [search, setSearch] = useState('')
 
     const getProducts = async (page) => {
         setNumberOfPage(page);
 
         try {
-            setLoading(true);
-            const { data } = await axios.get(
-                `${import.meta.env.VITE_API}/products?page=${page}&limit=4&sort=${sort}`
-            );
+
+            let endpoint = `${import.meta.env.VITE_API}/products?page=${page}&limit=4`
+            if (search) {
+                endpoint += `&search=${encodeURIComponent(search)}`;
+            }
+            if (sort) {
+                endpoint += `&sort=${encodeURIComponent(sort)}`;
+            }
+            const { data } = await axios.get(endpoint);
             setProducts(data);
         } catch (error) {
             toast.warn(error.response.data.message, {
@@ -45,7 +49,6 @@ function Products() {
             setLoading(false);
         }
     };
-
     const handelcahnge = async (productId) => {
         setLoading(true);
         try {
@@ -105,7 +108,8 @@ function Products() {
 
     useEffect(() => {
         getProducts(1);
-    }, [sort]);
+    }, [sort, search, 2000]);
+
     console.log(products);
     if (loading) {
         return <Loder />;
@@ -114,79 +118,92 @@ function Products() {
     return (
         <div className='d-flex flex-column '>
             <div className="bg-Categores">
-
-
-
-
                 <div>
-                    <a className="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        sort
-                    </a>
-                    <ul className="dropdown-menu">
-                        <li >
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('')}
-                            >
-                                defult
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('price')}
-                            >
-                                price
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('-price')}
-                            >
-                                -price
-                            </button>
 
-                        </li>
-                        <li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('name')}
-                            >
-                                -name
-                            </button>
-                        </li>
-                        <li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('discount')}
-                            >
-                                discount
-                            </button>
-                        </li>
-                        < li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('-discount')}
-                            >
-                                -discount
-                            </button>
-                        </li>
-                       
-                    </ul>
+
+                    <div className='d-flex align-items-center justify-content-center gap-3 flex-lg flex-sm m-3'>
+                        <div className='d-flex align-items-center justify-content-around flex-sm flex-lg w-100 gap-3'>
+                            <div>
+                                <label className='fs-3 me-2 text-335495'>search</label>
+                                <input
+                                    className=" h-fitContent "
+                                    type="text"
+                                    value={search}
+                                    name="search"
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                            </div>
+                            <a className="nav-link bg-335495 dropdown-toggle fs-4 border border-2 px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                sort
+                            </a>
+                            <ul className="dropdown-menu">
+                                <li >
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('')}
+                                    >
+                                        defult
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('price')}
+                                    >
+                                        price
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('-price')}
+                                    >
+                                        -price
+                                    </button>
+
+                                </li>
+                                <li>
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('name')}
+                                    >
+                                        -name
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('discount')}
+                                    >
+                                        discount
+                                    </button>
+                                </li>
+                                < li>
+                                    <button
+                                        type="submit"
+                                        className="w-75 mx-2 btn-hover-success"
+                                        onClick={() => setSort('-discount')}
+                                    >
+                                        -discount
+                                    </button>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >
                     {products.products.length ?
                         products.products.map(product =>
                             <div className={`card width-cart mt-2 mb-4 bg-prodect-information opacity-20 shadow position-relative ${product._id}`} key={product._id}>
                                 <NavLink to={`/information/${product.id}`}>
-                                    <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3`} alt="product mainImage" />
+                                    <img src={product.mainImage.secure_url} className={`card-img-top position-relative aspect-ratio-4x3 image-hover-shrinks`} alt="product mainImage" />
                                 </NavLink>
                                 <div className="card-body">
                                     <h5 className="card-title text-white">{product.name}</h5>

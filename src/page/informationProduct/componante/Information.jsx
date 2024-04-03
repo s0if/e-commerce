@@ -103,7 +103,7 @@ function Information() {
     if (loder) {
         return <Loder />
     }
-    console.log(reviw)
+    console.log(product)
     return (
         <>
 
@@ -113,7 +113,7 @@ function Information() {
                         <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top w-20 my-4' />
                         <div className='w-auto border border-dark rounded h-auto bg-product-information'>
                             <h1 className='border-bottom border-dark p-3 fs-2 px-3'>{product.name}</h1>
-                            <div className='d-flex  align-items-center gap-5'>
+                            <div className='d-flex  align-items-center gap-5  flex-sm flex-lg'>
                                 {
                                     (product.finalPrice < product.price) ? <div className='d-flex gap-5 px-3'>
                                         <h1 className='border-bottom border-dark p-3 fs-2 text-decoration-line-through '>{product.price}$</h1>
@@ -121,8 +121,17 @@ function Information() {
                                     </div> :
                                         <h1 className='border-bottom border-dark p-3 fs-2'>{product.price}$</h1>
                                 }
+                                <div className='d-flex justify-content-center pb-2'>
+                                    <Rating
+                                        initialRating={product.ratingNumbers}
+                                        readonly
+                                        emptySymbol={<FaStar className="text-muted" />}
+                                        fullSymbol={<FaStar className="text-warning" />}
+                                    />
 
+                                </div>
                             </div >
+
                             <p className='px-lg-3 p-sm-1 p-lg-3 px-sm-0 py-5 w-auto h-auto'>{product.description}</p>
                             <div className='d-flex justify-content-lg-between justify-content-sm-center flex-sm flex-lg'>
                                 <button
