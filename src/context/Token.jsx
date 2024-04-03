@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
 export const TokenContext = createContext();
 const TokenContextProvider = ({ children }) => {
-    const [token, setToken] = useState(localStorage.getItem("token") || "")
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
     const [auth, setAuth] = useState(localStorage.getItem("token") || "");
     useEffect(() => {
         if (token) {

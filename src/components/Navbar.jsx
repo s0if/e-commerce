@@ -10,6 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState({})
+  const [numberCart, setNumberCart] = useState(localStorage.getItem("token"))
   const handelChange = () => {
     localStorage.removeItem('token')
     navigate('/login')
@@ -37,6 +38,8 @@ function Navbar() {
       }
     )
     setCart(data.products);
+    localStorage.setItem("cart", cart.length);
+    setNumberCart(cart.length)
   }
   const getProfiles = async () => {
     try {
@@ -59,7 +62,8 @@ function Navbar() {
   useEffect(() => {
     getCart()
     getProfiles()
-  }, [cart])
+  }, [token])
+  console.log(numberCart)
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-nav  ">
@@ -83,7 +87,7 @@ function Navbar() {
                     <i className="bi icon bi-cart mt-2">
                     </i></div>
                   {
-                    cart.length ? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
+                    cart.length? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
                       {cart.length}
                     </div> : <div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
                       {cart.length}

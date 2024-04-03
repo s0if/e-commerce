@@ -6,7 +6,6 @@ import Categories from './page/categories/components/Categories';
 import Login from './page/login/components/Login';
 import Register from './page/register/components/Register';
 import Notfound from './components/Notfound';
-import Cart from './page/Cart/components/Cart';
 import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoutes from './components/auth/ProtectedRoutes';
@@ -18,7 +17,7 @@ import Forget from './page/forgetPassword/components/Forget';
 import Information from './page/informationProduct/componante/Information';
 import Order from './page/order/components/Order';
 import Profile from './page/profile/components/Profile';
-import CartContextProvider from './context/CartContext';
+import Cart from './page/Cart/components/Cart';
 function App() {
   const router = createBrowserRouter([
     {
@@ -93,9 +92,7 @@ function App() {
   return (
     <>
       <TokenContextProvider>
-        <CartContextProvider>
-          <RouterProvider router={router} />
-        </CartContextProvider>
+        <RouterProvider router={router} />
       </TokenContextProvider>
       <ToastContainer />
     </>

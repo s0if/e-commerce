@@ -178,14 +178,7 @@ function Products() {
                                 -discount
                             </button>
                         </li>
-                        <li>
-                            <button
-                                type="submit"
-                                className="w-75 mx-2 btn-hover-success"
-                                onClick={() => setSort('-price')}
-                            >
-                            </button>
-                        </li>
+                       
                     </ul>
                 </div>
                 <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center ${auth.id}`}  >

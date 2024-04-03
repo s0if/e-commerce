@@ -198,7 +198,7 @@ function Cart() {
   if (loading) {
     return <Loder />
   }
-  console.log(totalPrice)
+  console.log(cart)
   return (
     <div className={`bg-FFD498`}>
       <div className={` d-flex flex-column flex-wrap container gap-lg-2 gap-sm-1 justify-content-center   ${auth.id}`}>
@@ -224,7 +224,7 @@ function Cart() {
                           <td>
                             <button
                               type="submit"
-                              className="btn btn-danger my-1 btn-hover "
+                              className="btn btn-primary my-1 btn-hover-red "
                               onClick={() => (handeldecrease(cart.productId))
                               }
                               disabled={cart.quantity == 1 ? "disabled" : null}
@@ -236,7 +236,7 @@ function Cart() {
                           <td>
                             <button
                               type="submit"
-                              className="btn btn-success my-1 btn-hover"
+                              className="btn btn-success  my-1 btn-hover"
                               onClick={() => handelincrease(cart.productId)}
                             >
                               +
@@ -244,7 +244,7 @@ function Cart() {
                           </td>
                         </td>
                         <td scope="col" className='w-sm-100 px-2 w-10  d-flex justify-content-center align-items-center'>
-                          <h2 className=' text-dark   m-sm-helf fs-sm-1'>${(cart.details.finalPrice).toFixed(2)}</h2>
+                          <h2 className=' text-dark m-sm-helf fs-sm-1'>${(cart.details.finalPrice).toFixed(2)}</h2>
                         </td>
                         <td scope="col" className='w-sm-100 px-2 w-10  d-flex justify-content-center align-items-center'>
                           <h2 className=' text-dark p-sm-1  m-sm-helf fs-sm-1 '>${
@@ -254,7 +254,7 @@ function Cart() {
                         <td>
                           <button
                             type="submit"
-                            className="btn btn-danger btn-hover  position-absolute start-0 top-0"
+                            className="btn btn-primary btn-hover-red  position-absolute start-0 top-0"
                             onClick={() => handelremove(cart.productId)}
                           >
                             <i className="bi bi-x-lg"></i>
@@ -275,14 +275,14 @@ function Cart() {
                 <NavLink to='/order'>
                   <button
                     type="submit"
-                    className="btn w-100 btn-danger my-1 btn-hover "
+                    className="btn w-100 btn-primary my-1 btn-hover-success "
                   >
-                   Confirmation
+                    Confirmation
                   </button>
                 </NavLink>
                 <button
                   type="submit"
-                  className="btn btn-danger my-1 btn-hover "
+                  className="btn btn-primary  my-1  "
                   onClick={() => (handelClearCart())}
                 >
                   clear cart
