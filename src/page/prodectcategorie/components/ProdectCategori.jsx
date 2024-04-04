@@ -60,7 +60,6 @@ function ProdectCategori() {
   if (loading) {
     return < Loder />
   }
-  console.log(product)
   return (
     <div >
       <h1 className='d-flex text-dark justify-content-center py-2'>{name}</h1>

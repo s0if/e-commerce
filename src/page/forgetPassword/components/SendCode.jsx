@@ -22,7 +22,6 @@ function SendCode() {
                 email
             }
             )
-            console.log(data)
             if (data.message == "success") {
                 toast.success('the code has been sent please check your email', {
                     position: "top-right",

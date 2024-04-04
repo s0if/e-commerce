@@ -43,13 +43,19 @@ function Information() {
             )
             setCommit('');
             setRating('');
-            console.log(data)
             setLodder(false);
-            // toast.success(data.message);
         } catch (error) {
-            console.log(error)
-
-            // toast.error(error.response.data.message);
+            toast.warn(error.response.data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         }
         finally {
             setLodder(false);
@@ -103,7 +109,6 @@ function Information() {
     if (loder) {
         return <Loder />
     }
-    console.log(product)
     return (
         <>
 

@@ -13,7 +13,6 @@ const CartsContextProvider = ({ cildren }) => {
             }
         )
         setCart(data.count);
-        console.log(data.count)
     }
     useEffect(
         () => {

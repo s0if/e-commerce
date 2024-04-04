@@ -8,7 +8,6 @@ import getCart from '../../../hooks/getCart';
 import { NavLink } from 'react-router-dom';
 
 function Order() {
-  // const [loading, setLoading] = useState(false);
   const { token } = useContext(TokenContext)
   const [errors, setErrors] = useState([]);
   const { cart, loading, setLoading } = getCart()
@@ -135,9 +134,9 @@ function Order() {
             }
           }
         )
-        order.coupon='';
-        order.address='';
-        order.phone='';
+        order.coupon = '';
+        order.address = '';
+        order.phone = '';
         setOrder(data)
         if (data.message == "success") {
           toast.success("confirmation has been sent please check your email", {
@@ -178,7 +177,6 @@ function Order() {
   if (loading) {
     return <Loder />
   }
-  console.log(cart);
   return (
     <div className="bg-FFD498">
       <h1 className='d-flex justify-content-center py-3'>order</h1>

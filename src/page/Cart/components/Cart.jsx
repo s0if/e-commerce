@@ -198,7 +198,6 @@ function Cart() {
   if (loading) {
     return <Loder />
   }
-  console.log(cart)
   return (
     <div className={`bg-FFD498`}>
       <div className={` d-flex flex-column flex-wrap container gap-lg-2 gap-sm-1 justify-content-center   ${auth.id}`}>

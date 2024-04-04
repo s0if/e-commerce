@@ -39,20 +39,15 @@ function Navbar() {
     setCart(data.products);
   }
   const getProfiles = async () => {
-    try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API}/user/profile`,
-        {
-          headers: {
-            Authorization: `Tariq__${token}`
-          }
+    const { data } = await axios.get(
+      `${import.meta.env.VITE_API}/user/profile`,
+      {
+        headers: {
+          Authorization: `Tariq__${token}`
         }
-      )
-      setUser(data.user)
-    }
-    catch (error) {
-      console.log(error)
-    }
+      }
+    )
+    setUser(data.user)
 
   }
 
@@ -63,62 +58,63 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-335495  ">
-        <div className="container-fluid d-flex justify-content-end align-item-center">
+        <div className="container-fluid d-flex justify-content-betuen ">
+          <li><img src="logo.svg" alt="" /></li>
           <button className="navbar-toggler bg-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse d-flex flex-sm flex-lg justify-content-around" id="navbarNav">
-            <li><img src="logo.svg" alt="" /></li>
-            <ul className="navbar-nav   d-flex justify-content-center align-items-center  ">
+          <div className="collapse navbar-collapse " id="navbarNav">
+            <div className='d-flex w-100 flex-sm flex-lg align-item-center  justify-content-around'>
+              <ul className="navbar-nav d-flex justify-content-center align-items-center  ">
 
-              <li className="nav-item ">
-                <NavLink className="nav-link text-dark" aria-current="page" to="/" >home</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link text-dark" to="/products">Products</NavLink>
-              </li>
-              <li className="nav-item position-relative ">
-                <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart">
-                  <div className='mt-1'>
-                    <i className="bi icon bi-cart mt-2">
-                    </i></div>
-                  {
-                    cart.length ? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
-                      {cart.length}
-                    </div> : <div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
-                      {cart.length}
-                    </div>
-                  }
-
-                </NavLink>
-              </li>
-            </ul>
-
-
-            <li className="nav-item dropdown m-0 p-0 me-lg-5 d-flex justify-content-center align-items-center ">
-
-              <a className="nav-link dropdown-toggle text-dark d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <h1 className="nav-link fs-5 "  > {auth ? auth.userName : 'Welcome'}</h1>
-              </a>
-              <ul className="dropdown-menu">
-                <li className={`nav-item d-flex gap-1 pb-2 px-2 ${token && 'd-none'}`}>
-                  <i className="bi icon bi-door-open"></i>
-                  <NavLink className={`nav-link text-dark dropdown-item `} to="/login">Login</NavLink>
+                <li className="nav-item ">
+                  <NavLink className="nav-link text-dark" aria-current="page" to="/" >home</NavLink>
                 </li>
-                <li className={`nav-item d-flex gap-1 pb-2 px-2 ${token && 'd-none'}`}>
-                  <i className="bi icon bi-r-square"></i>
-                  <Link className={`nav-link text-dark dropdown-item `} to="/register">Register</Link>
+                <li className="nav-item">
+                  <NavLink className="nav-link text-dark" to="/products">Products</NavLink>
                 </li>
-                <li className={`nav-item d-flex gap-1 border-bottom border-dark pb-2 px-2 ${!token && "d-none"}`}>
-                  {user.image && <img src={`${user.image.secure_url}`} className='size-profile rounded-circle' alt="" />}
-                  <Link className={`nav-link  dropdown-item text-dark `} to='/profile'>profile</Link>
-                </li>
-                <li className={`nav-item d-flex gap-1 pt-2 px-2 ${!token && "d-none"}`}>
-                  <i className="bi bi-box-arrow-right color-icon " />
-                  <button className={`nav-link  dropdown-item text-dark `} onClick={handelChange} >logout</button>
+                <li className="nav-item position-relative ">
+                  <NavLink className={`nav-link text-white ${!token && "d-none"}`} to="/cart">
+                    <div className='mt-1'>
+                      <i className="bi icon bi-cart mt-2">
+                      </i></div>
+                    {
+                      cart.length ? <div className='position-absolute top-0 end-0 rounded-circle bg-success p-helf d-flex justify-content-center align-item-center align-items-center'>
+                        {cart.length}
+                      </div> : <div className='position-absolute top-0 end-0 rounded-circle bg-danger p-helf d-flex justify-content-center align-item-center align-items-center'>
+                        {cart.length}
+                      </div>
+                    }
+
+                  </NavLink>
                 </li>
               </ul>
-            </li>
+              <li className="nav-item dropdown m-0 p-0 me-lg-5 d-flex justify-content-center align-items-center ">
+
+                <a className="nav-link dropdown-toggle text-dark d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <h1 className="nav-link fs-5 "  > {auth ? auth.userName : 'Welcome'}</h1>
+                </a>
+                <ul className="dropdown-menu">
+                  <li className={`nav-item d-flex gap-1 pb-2 px-2 ${token && 'd-none'}`}>
+                    <i className="bi icon bi-door-open"></i>
+                    <NavLink className={`nav-link text-dark dropdown-item `} to="/login">Login</NavLink>
+                  </li>
+                  <li className={`nav-item d-flex gap-1 pb-2 px-2 ${token && 'd-none'}`}>
+                    <i className="bi icon bi-r-square"></i>
+                    <Link className={`nav-link text-dark dropdown-item `} to="/register">Register</Link>
+                  </li>
+                  <li className={`nav-item d-flex gap-1 border-bottom border-dark pb-2 px-2 ${!token && "d-none"}`}>
+                    {user.image && <img src={`${user.image.secure_url}`} className='size-profile rounded-circle' alt="" />}
+                    <Link className={`nav-link  dropdown-item text-dark `} to='/profile'>profile</Link>
+                  </li>
+                  <li className={`nav-item d-flex gap-1 pt-2 px-2 ${!token && "d-none"}`}>
+                    <i className="bi bi-box-arrow-right color-icon " />
+                    <button className={`nav-link  dropdown-item text-dark `} onClick={handelChange} >logout</button>
+                  </li>
+                </ul>
+              </li>
+            </div>
+
           </div>
         </div>
       </nav>

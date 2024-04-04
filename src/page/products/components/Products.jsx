@@ -97,8 +97,6 @@ function Products() {
                 pagesArray.push(i);
             }
             setNumberPage(pagesArray);
-        } else {
-            console.log('else');
         }
     };
 
@@ -109,8 +107,6 @@ function Products() {
     useEffect(() => {
         getProducts(1);
     }, [sort, search, 2000]);
-
-    console.log(products);
     if (loading) {
         return <Loder />;
     }
