@@ -57,7 +57,7 @@ function Categories() {
                 className="categories "
                 key={category._id}
               >
-                <Link to={`prodectcategorie/${category._id}/${category.name}`}><img src={category.image.secure_url} /></Link>
+                <Link to={`prodectcategorie/${category._id}/${category.name}`}><img src={category.image.secure_url} className='image-hover-shrinks' /></Link>
               </div>
             </SwiperSlide>
           )

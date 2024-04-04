@@ -89,13 +89,15 @@ function ProdectCategori() {
                   </div> : <h5 className="card-title text-white position-absolute start-0 top-0 bg-prodect-information p-2 m-2 border border-1 rounded">{product.price}$</h5>
                 }
               </div>
-              <button
-                type="submit"
-                className="btn btn-secondary btn-hover"
-                onClick={() => handelcahnge(product.id)}
-              >
-                add product
-              </button>
+              {
+                token && <button
+                  type="submit"
+                  className="btn btn-secondary btn-hover"
+                  onClick={() => handelcahnge(product.id)}
+                >
+                  add product
+                </button>
+              }
               {
                 (product.stock > 0) ? '' : <div className='position-absolute bottom-0 top-0 start-0 end-0 overlay'>
                   <h1 className='bg-danger border border-light rounded p-2'>solid out</h1>

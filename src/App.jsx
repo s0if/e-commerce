@@ -37,7 +37,11 @@ function App() {
         },
         {
           path: '/information/:id',
-          element: <Information />
+
+          element:
+            <ProtectedRoutes>
+              <Information />
+            </ProtectedRoutes>
         },
         {
           path: '/forget',
@@ -76,11 +80,7 @@ function App() {
         },
         {
           path: '/prodectcategorie/:id/:name',
-          element:
-            <ProtectedRoutes>
-              <ProdectCategori />
-            </ProtectedRoutes>
-
+          element: <ProdectCategori />
         },
         {
           path: '*',
