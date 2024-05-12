@@ -23,7 +23,7 @@ function Categories() {
     return < Loder />
   }
   return (
-    <div className='bg-Categores'>
+    <div className='bg-FFD498'>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}

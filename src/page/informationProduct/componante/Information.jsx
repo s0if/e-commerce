@@ -113,7 +113,7 @@ function Information() {
         <>
 
             {
-                <div className=' shadow'>
+                <div className='bg-FFD498 '>
                     <div className='w-auto d-flex justify-content-center align-items-center gap-xl-5 gap-lg-2 gap-sm-1 py-5 flex-wrap flex-lg-nowrap  container'>
                         <img src={product.mainImage.secure_url} alt="photo" className='rounded card-img-top w-20 my-4' />
                         <div className='w-auto border border-dark rounded h-auto bg-product-information'>

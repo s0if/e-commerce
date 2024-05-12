@@ -281,7 +281,7 @@ function Cart() {
                 </NavLink>
                 <button
                   type="submit"
-                  className="btn btn-primary  my-1 btn-hover-success "
+                  className="btn btn-primary  my-1 btn-hover-red "
                   onClick={() => (handelClearCart())}
                 >
                   clear cart

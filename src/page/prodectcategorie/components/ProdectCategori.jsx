@@ -61,7 +61,7 @@ function ProdectCategori() {
     return < Loder />
   }
   return (
-    <div >
+    <div className='bg-FFD498'>
       <h1 className='d-flex text-dark justify-content-center py-2'>{name}</h1>
       <div className={`d-flex flex-wrap container gap-xl-5 gap-lg-2 gap-sm-1 w-100 justify-content-center `} key={id} >
         {product.length ?

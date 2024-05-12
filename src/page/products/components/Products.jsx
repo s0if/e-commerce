@@ -113,7 +113,7 @@ function Products() {
 
     return (
         <div className='d-flex flex-column '>
-            <div className="bg-Categores">
+            <div className="bg-FFD498">
                 <div>
 
 
@@ -235,8 +235,8 @@ function Products() {
                 </div>
             </div>
 
-            <nav aria-label="Page navigation example r">
-                <ul className="pagination d-flex bg-pogination rounded justify-content-center mb-0 py-3 ">
+            <nav aria-label="Page navigation example ">
+                <ul className="pagination d-flex bg-FFD498 justify-content-center mb-0 py-3 ">
                     {
                         (numberOfPage == 1) ?
                             <li className="page-item">

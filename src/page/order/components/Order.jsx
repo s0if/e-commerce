@@ -190,7 +190,7 @@ function Order() {
                 </NavLink>
                 <button
                   type="submit"
-                  className="btn btn-danger btn-hover  position-absolute start-0 top-0"
+                  className="btn btn-primary btn-hover-red  position-absolute start-0 top-0"
                   onClick={() => handelremove(cart.productId)}
                 >
                   <i className="bi bi-x-lg"></i>
