@@ -48,7 +48,6 @@ function Navbar() {
       }
     )
     setUser(data.user)
-
   }
 
   useEffect(() => {
@@ -60,13 +59,12 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg bg-335495  ">
         <div className="container-fluid d-flex justify-content-betuen ">
           <li><img src="logo.svg" alt="" /></li>
-          <button className="navbar-toggler bg-white " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse " id="navbarNav">
             <div className='d-flex w-100 flex-sm flex-lg align-item-center  justify-content-around'>
               <ul className="navbar-nav d-flex justify-content-center align-items-center  ">
-
                 <li className="nav-item ">
                   <NavLink className="nav-link text-dark" aria-current="page" to="/" >home</NavLink>
                 </li>
@@ -90,7 +88,6 @@ function Navbar() {
                 </li>
               </ul>
               <li className="nav-item dropdown m-0 p-0 me-lg-5 d-flex justify-content-center align-items-center ">
-
                 <a className="nav-link dropdown-toggle text-dark d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <h1 className="nav-link fs-5 "  > {auth ? auth.userName : 'Welcome'}</h1>
                 </a>
@@ -109,7 +106,7 @@ function Navbar() {
                   </li>
                   <li className={`nav-item d-flex gap-1 pt-2 px-2 ${!token && "d-none"}`}>
                     <i className="bi bi-box-arrow-right color-icon " />
-                    <button className={`nav-link  dropdown-item text-dark `} onClick={handelChange} >logout</button>
+                    <button className={`nav-link  dropdown-item text-dark`} onClick={handelChange} >logout</button>
                   </li>
                 </ul>
               </li>

@@ -1,8 +1,8 @@
 import React from 'react'
 function Notfound() {
     return (
-        <div>
-            <h1>Notfound</h1>
+        <div className='w-100'>
+            <img src="notfound.jpg" alt="notfound" className='w-100' />
         </div>
     )
 }
